@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Home - ATS Simple{% endblock %}
+
+{% block content %}
+<div class="welcome-section">
+    <h1>Welcome to ATS Simple</h1>
+    <p>Your simple and efficient Applicant Tracking System</p>
+    
+    <div class="feature-cards">
+        <div class="card">
+            <h3>Manage Jobs</h3>
+            <p>Create and manage job postings with ease</p>
+            <a href="{{ url_for('jobs') }}" class="btn btn-primary">View Jobs</a>
+        </div>
+        
+        <div class="card">
+            <h3>Track Candidates</h3>
+            <p>Keep track of all your candidates in one place</p>
+            <a href="{{ url_for('candidates') }}" class="btn btn-primary">View Candidates</a>
+        </div>
+        
+        <div class="card">
+            <h3>Dashboard</h3>
+            <p>Get insights and overview of your hiring process</p>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Go to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

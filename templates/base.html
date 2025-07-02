@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ATS Simple{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Header Component -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1><a href="{{ url_for('index') }}">ATS Simple</a></h1>
+            </div>
+            
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('jobs') }}" class="nav-link">Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('candidates') }}" class="nav-link">Candidates</a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile menu button -->
+                <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+</body>
+</html>

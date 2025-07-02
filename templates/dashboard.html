@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - ATS Simple{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Dashboard</h1>
+    <p>Overview of your hiring process</p>
+</div>
+
+<div class="dashboard-content">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>5</h3>
+            <p>Active Jobs</p>
+        </div>
+        <div class="stat-card">
+            <h3>23</h3>
+            <p>Total Candidates</p>
+        </div>
+        <div class="stat-card">
+            <h3>8</h3>
+            <p>Interviews Scheduled</p>
+        </div>
+        <div class="stat-card">
+            <h3>2</h3>
+            <p>Offers Extended</p>
+        </div>
+    </div>
+    
+    <div class="recent-activity">
+        <h2>Recent Activity</h2>
+        <ul>
+            <li>New candidate applied to Software Engineer position</li>
+            <li>Interview scheduled with John Doe</li>
+            <li>Job posting for Marketing Manager published</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

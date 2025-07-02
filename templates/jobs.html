@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Jobs - ATS Simple{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Job Postings</h1>
+    <p>Manage your job openings</p>
+</div>
+
+<div class="jobs-content">
+    <div class="job-list">
+        <div class="job-card">
+            <h3>Software Engineer</h3>
+            <p>Full-time • Remote</p>
+            <p>Looking for an experienced software engineer to join our team...</p>
+            <div class="job-meta">
+                <span>Posted: 2 days ago</span>
+                <span>Applicants: 12</span>
+            </div>
+        </div>
+        
+        <div class="job-card">
+            <h3>Marketing Manager</h3>
+            <p>Full-time • New York</p>
+            <p>Seeking a creative marketing manager to lead our marketing efforts...</p>
+            <div class="job-meta">
+                <span>Posted: 1 week ago</span>
+                <span>Applicants: 8</span>
+            </div>
+        </div>
+        
+        <div class="job-card">
+            <h3>UI/UX Designer</h3>
+            <p>Contract • San Francisco</p>
+            <p>We need a talented designer to create amazing user experiences...</p>
+            <div class="job-meta">
+                <span>Posted: 3 days ago</span>
+                <span>Applicants: 15</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Candidates - ATS Simple{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Candidates</h1>
+    <p>Manage your candidate pipeline</p>
+</div>
+
+<div class="candidates-content">
+    <div class="candidate-list">
+        <div class="candidate-card">
+            <h3>John Doe</h3>
+            <p>Software Engineer • 5 years experience</p>
+            <p>Applied for: Software Engineer position</p>
+            <div class="candidate-status">
+                <span class="status status-interview">Interview Scheduled</span>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <h3>Jane Smith</h3>
+            <p>Marketing Professional • 3 years experience</p>
+            <p>Applied for: Marketing Manager position</p>
+            <div class="candidate-status">
+                <span class="status status-review">Under Review</span>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <h3>Mike Johnson</h3>
+            <p>UX Designer • 4 years experience</p>
+            <p>Applied for: UI/UX Designer position</p>
+            <div class="candidate-status">
+                <span class="status status-new">New Application</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
