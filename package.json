@@ -19,7 +19,8 @@
   "dependencies": {
     "pinia": "^3.0.3",
     "vue": "^3.5.17",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "vuetify": "^3.8.12"
   },
   "devDependencies": {
     "@playwright/test": "^1.53.1",
@@ -43,7 +44,7 @@
     "oxlint": "~1.1.0",
     "prettier": "3.5.3",
     "typescript": "~5.8.0",
-    "vite": "npm:rolldown-vite@latest",
+    "vite": "npm:rolldown-vite@^7.0.4",
     "vite-plugin-vue-devtools": "^7.7.7",
     "vitest": "^3.2.4",
     "vue-material": "1.0.0-beta-16",
