@@ -46,6 +46,7 @@
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-vue-devtools": "^7.7.7",
     "vitest": "^3.2.4",
+    "vue-material": "1.0.0-beta-16",
     "vue-tsc": "^2.2.10"
   }
 }
