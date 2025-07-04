@@ -1,0 +1,189 @@
+/* Mobile-first responsive utilities */
+
+/* Container max-widths */
+.container-responsive {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 600px) {
+  .container-responsive {
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 960px) {
+  .container-responsive {
+    max-width: 1280px;
+    padding: 0 32px;
+  }
+}
+
+/* Spacing utilities for mobile */
+.mobile-spacing {
+  padding: 16px !important;
+}
+
+@media (min-width: 600px) {
+  .mobile-spacing {
+    padding: 24px !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .mobile-spacing {
+    padding: 32px !important;
+  }
+}
+
+/* Typography responsive adjustments */
+.responsive-title {
+  font-size: 1.5rem !important;
+  line-height: 1.2;
+}
+
+@media (min-width: 600px) {
+  .responsive-title {
+    font-size: 2rem !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .responsive-title {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Card responsive adjustments */
+.mobile-card {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .mobile-card .v-card-title {
+    font-size: 1.1rem !important;
+    padding: 12px 16px 8px 16px !important;
+  }
+
+  .mobile-card .v-card-text {
+    padding: 0 16px 12px 16px !important;
+    font-size: 0.875rem !important;
+  }
+
+  .mobile-card .v-card-actions {
+    padding: 8px 16px 16px 16px !important;
+  }
+}
+
+/* Button responsive adjustments */
+@media (max-width: 600px) {
+  .v-btn {
+    font-size: 0.875rem !important;
+  }
+
+  .v-btn--size-small {
+    min-height: 32px !important;
+    padding: 0 8px !important;
+  }
+}
+
+/* Navigation responsive adjustments */
+@media (max-width: 960px) {
+  .v-toolbar .v-btn {
+    min-width: 40px !important;
+  }
+
+  .v-toolbar .v-btn .v-btn__content {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* List responsive adjustments */
+@media (max-width: 600px) {
+  .v-list-item {
+    min-height: 44px !important;
+  }
+
+  .v-list-item-title {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Grid responsive adjustments */
+.responsive-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 960px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+}
+
+/* Hide/Show utilities for different screen sizes */
+@media (max-width: 599px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 959px) {
+  .mobile-only {
+    display: block !important;
+  }
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .mobile-only {
+    display: none !important;
+  }
+  .desktop-only {
+    display: block !important;
+  }
+}
+
+/* Touch-friendly adjustments */
+@media (pointer: coarse) {
+  .v-btn, .v-list-item, .v-card {
+    min-height: 44px !important;
+  }
+
+  .v-app-bar-nav-icon {
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+}
