@@ -1,30 +1,21 @@
-<!-- eslint-disable vue/valid-v-slot -->
 <template>
-  <v-stepper prev-text="Previous" next-text="Next" :items="['Step 1', 'Step 2', 'Step 3']">
-    <template v-slot:item.1>
-      <v-card title="Step One" flat
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti consequatur repellat
-        aliquam, culpa quisquam saepe maiores natus aspernatur dolorum, nam dignissimos inventore
-        molestias ut, doloribus sint recusandae eos autem incidunt.</v-card
-      >
-    </template>
-
-    <template v-slot:item.2>
-      <v-card title="Step Two" flat
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti consequatur repellat
-        aliquam, culpa quisquam saepe maiores natus aspernatur dolorum, nam dignissimos inventore
-        molestias ut, doloribus sint recusandae eos autem incidunt.</v-card
-      >
-    </template>
-
-    <template v-slot:item.3>
-      <v-card title="Step Three" flat
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti consequatur repellat
-        aliquam, culpa quisquam saepe maiores natus aspernatur dolorum, nam dignissimos inventore
-        molestias ut, doloribus sint recusandae eos autem incidunt.</v-card
-      >
-    </template>
+  <v-stepper v-model="activeStep" :items="steps.map(s => s.title)" prev-text="Previous" next-text="Next">
+    <v-card flat :title="steps[activeStep - 1].title">
+      <div style="padding-inline: 16px;" v-if="typeof steps[activeStep - 1].content === 'string'" v-html="steps[activeStep - 1].content" />
+      <component v-else :is="steps[activeStep - 1].content" />
+    </v-card>
   </v-stepper>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+defineProps<{
+  steps: {
+    title: string
+    content: string | object
+  }[]
+}>()
+
+const activeStep = ref(1) // Vuetify stepper is 1-based
+</script>
