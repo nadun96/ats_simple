@@ -1,6 +1,6 @@
 <template>
   <h1>Sample Page</h1>
-  <cd-stepper :steps="stepData"></cd-stepper>
+  <cd-stepper :steps="stepData" :onNext="handleNext" :onPrev="handlePrev"></cd-stepper>
 </template>
 
 <script lang="ts">
@@ -14,19 +14,45 @@ export default {
     return {
       stepData: [
         {
-          title: 'Step 1',
-          content: '<div>Content for Step 1</div>',
+          title: 'Job Description',
+          content: '<div>Content for Job Description</div>',
         },
         {
-          title: 'Step 2',
-          content: '<div>Content for Step 2</div>',
+          title: 'Form',
+          content: '<div>Content for Form</div>',
         },
         {
-          title: 'Step 3',
-          content: '<div>Content for Step 3</div>',
+          title: 'Workflow',
+          content: '<div>Content for Workflow</div>',
+        },
+        {
+          title: 'Job Team',
+          content: '<div>Content for Job Team</div>',
+        },
+        {
+          title: 'Promote',
+          content: '<div>Content for Promote</div>',
         },
       ],
     }
+  },
+  methods: {
+    handleNext(currentStep: number) {
+      console.log('Next clicked on step:', currentStep)
+      // Example: Validate something at step 2
+      if (currentStep === 2) {
+        const isFormValid = true // Replace with actual logic
+        if (!isFormValid) {
+          alert('Please complete the form before continuing.')
+          return false
+        }
+      }
+      return true // allow step transition
+    },
+    handlePrev(currentStep: number) {
+      console.log('Previous clicked on step:', currentStep)
+      return true // allow going back
+    },
   },
 }
 </script>
