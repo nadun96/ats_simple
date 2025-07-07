@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import AppBarMain from '@/components/header/AppBarMain.vue'
+import SampleView from '@/views/SampleView.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -13,6 +15,11 @@ const router = createRouter({
       path: '/app',
       name: 'appbar',
       component: AppBarMain,
+    },
+    {
+      path: '/sample',
+      name: 'samplePage',
+      component: SampleView,
     },
   ]
 })
