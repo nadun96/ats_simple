@@ -1,6 +1,6 @@
 <template>
   <div class="home-view">
-    <HeaderView />
+    
 
     <!-- Main Content Area -->
     <v-main>
