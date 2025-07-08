@@ -31,6 +31,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+
 import Recruitment from '@/views/Recruitment.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue' // 🔁 Add this layout wrapper
 
@@ -39,6 +40,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+
       component: DefaultLayout, // 🧩 HeaderView is inside this layout
       children: [
         {
