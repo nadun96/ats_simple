@@ -11,7 +11,6 @@
               class="text-none"
               v-bind="props"
               append-icon="mdi-chevron-down"
-              @click="goToRecruitments"
               
             >
               Recrutements
@@ -54,26 +53,6 @@
       </v-toolbar-items>
 </template>
 
-// <script lang="ts">
-// import { defineComponent } from 'vue';
-// import { useRouter } from 'vue-router';
-
-// const router = useRouter()
-
-// export default defineComponent({
-//   name: 'NavigationItems',
-// });
-
-// const goTo = (path: string) => {
-//   router.push(path)
-// }
-
-// const goToRecruitments = () => {
-//   router.push({ name: 'Recruitment' }); // use route name, or path: '/recruitments'
-//   console.log("hi.. req clicked..")
-// }
-// </script>
-
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 
@@ -82,6 +61,7 @@ const router = useRouter()
 const goTo = (path: string) => {
   router.push(path)
 }
+
 </script>
 
 
