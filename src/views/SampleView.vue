@@ -1,14 +1,29 @@
 <template>
   <h1>Sample Page</h1>
   <cd-stepper :steps="stepData" :onNext="handleNext" :onPrev="handlePrev"></cd-stepper>
+  <v-container class="my-3 px-0">
+    <cd-text-input
+      :label="'Your landing page'"
+      :hint="'www.example.com/page'"
+      :persistent-hint="true"
+      @update:modelValue="onInputChange"
+    ></cd-text-input>
+  </v-container>
+  <v-container class="my-3 px-0">
+    <cd-rich-text-editor />
+  </v-container>
 </template>
 
 <script lang="ts">
 import CdStepper from '@/components/CdStepper.vue'
+import CdTextInput from '@/components/CdTextInput.vue'
+import CdRichTextEditor from '@/components/CdRichTextEditor.vue'
 
 export default {
   components: {
     'cd-stepper': CdStepper,
+    'cd-text-input': CdTextInput,
+    'cd-rich-text-editor': CdRichTextEditor,
   },
   data() {
     return {
@@ -52,6 +67,9 @@ export default {
     handlePrev(currentStep: number) {
       console.log('Previous clicked on step:', currentStep)
       return true // allow going back
+    },
+    onInputChange(value: string) {
+      console.log('text field updated:', value)
     },
   },
 }
