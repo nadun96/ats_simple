@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView.vue'
 import Recruitment from '@/views/Recruitment.vue'
 import SampleView from '@/views/SampleView.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue' // 🔁 Add this layout wrapper
+import CreateJob from '@/views/Jobs/CreateJob.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +23,11 @@ const router = createRouter({
           path: 'recruitment',
           name: 'recruitment',
           component: Recruitment,
+        },
+        {
+          path: 'job',
+          name: 'job',
+          component: CreateJob,
         },
         {
           path: 'sample',
