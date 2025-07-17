@@ -37,9 +37,12 @@
 
         <!-- Job title and location -->
         <div>
-          <div class="font-weight-bold text-body-1 text-truncate job-title">
+          <router-link
+            :to="{ name: 'job-detail', params: { id: job.id } }"
+            class="font-weight-bold text-body-1 text-truncate job-title clickable-title"
+          >
             {{ job.title }}
-          </div>
+          </router-link>
           <div class="text-caption text-grey-darken-1">{{ job.location }}</div>
         </div>
       </v-col>
@@ -147,6 +150,7 @@ import { ref } from 'vue'
 
 const props = defineProps<{
   job: {
+    id: string
     title: string
     location: string
     date: string
@@ -190,6 +194,16 @@ const onLabelClick = (label: string) => {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.clickable-title {
+  cursor: pointer;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.clickable-title:hover {
+  text-decoration: underline;
 }
 
 .flex-nowrap {
