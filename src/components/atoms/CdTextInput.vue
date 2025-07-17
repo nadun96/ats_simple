@@ -1,8 +1,5 @@
 <template>
-  <label>
-    {{ label }}
-    <span v-if="required" class="required-indicator">*</span>
-  </label>
+  <CdLabel :label="label" :required="required" />
   <v-text-field
     density="compact"
     :hint="hint"
@@ -15,6 +12,8 @@
 </template>
 
 <script setup lang="ts">
+import { CdLabel } from '.'
+
 withDefaults(
   defineProps<{
     label: string
@@ -31,9 +30,3 @@ withDefaults(
 )
 defineEmits(['update:modelValue'])
 </script>
-
-<style scoped>
-.required-indicator {
-  color: #d32f2f;
-}
-</style>

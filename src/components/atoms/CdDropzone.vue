@@ -1,9 +1,6 @@
 <template>
   <div>
-    <label>
-      {{ label }}
-      <span v-if="required" class="required-indicator">*</span>
-    </label>
+    <CdLabel v-if="label" :label="label" :required="required" />    
     <div class="custom-file-container" :data-upload-id="dropzoneId"></div>
   </div>
 </template>
@@ -12,6 +9,7 @@
 import { onMounted } from 'vue'
 import { Events, FileUploadWithPreview, type ImageAddedEvent } from 'file-upload-with-preview'
 import 'file-upload-with-preview/dist/style.css'
+import { CdLabel } from '.';
 
 const props = defineProps<{ dropzoneId: string; label?: string; required?: boolean }>()
 
@@ -21,9 +19,14 @@ onMounted(() => {
 
 window.addEventListener(Events.IMAGE_ADDED, (e: Event) => {
   const { detail } = e as unknown as ImageAddedEvent
-
   console.log('detail', detail)
 })
+
+window.addEventListener(Events.CLEAR_BUTTON_CLICKED, (e: Event) => {
+  const { detail } = e as CustomEvent
+  console.log('Clear button clicked:', detail)
+})
+
 </script>
 
 <style>
@@ -75,9 +78,5 @@ window.addEventListener(Events.IMAGE_ADDED, (e: Event) => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.required-indicator {
-  color: #d32f2f;
 }
 </style>

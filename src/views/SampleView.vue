@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts">
-import CdStepper from '@/components/CdStepper.vue'
-import CdRichTextEditor from '@/components/CdRichTextEditor.vue'
+import CdStepper from '@/components/molecules/CdStepper.vue'
 import { CdTextInput } from '@/components/atoms'
+import { CdRichTextEditor } from '@/components/molecules'
 
 export default {
   components: {

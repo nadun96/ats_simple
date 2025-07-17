@@ -1,8 +1,8 @@
 <template>
-  <label>
-    {{ label }}
-    <span v-if="required" class="required-indicator">*</span>
-  </label>
+  <div class="mb-1">
+    <CdLabel v-if="label" :label="label" :required="required" />
+  </div>
+
   <QuillEditor theme="snow" toolbar="essential" style="height: 300px" />
 </template>
 
@@ -10,15 +10,10 @@
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import { defineProps } from 'vue'
+import { CdLabel } from '../atoms'
 
 defineProps<{
   label?: string
   required?: boolean
 }>()
 </script>
-
-<style scoped>
-.required-indicator {
-  color: #d32f2f;
-}
-</style>

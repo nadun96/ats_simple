@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import CdStepper from '@/components/CdStepper.vue'
-import JobDescription from './tabs/JobDescription.vue'
+import CdStepper from '@/components/molecules/CdStepper.vue'
+import JobDescription from './tabs/step1/JobDescription.vue'
 
 export default {
   components: {
