@@ -21,13 +21,11 @@
     </div>
 
     <!-- Step Content -->
-    <v-card elevation="2" class="mt-6 pa-4 rounded-lg">
-      <div
-        v-if="typeof steps[activeStep - 1].content === 'string'"
-        v-html="steps[activeStep - 1].content"
-      ></div>
-      <component v-else :is="steps[activeStep - 1].content" />
-    </v-card>
+    <div
+      v-if="typeof steps[activeStep - 1].content === 'string'"
+      v-html="steps[activeStep - 1].content"
+    ></div>
+    <component v-else :is="steps[activeStep - 1].content" />
 
     <!-- Navigation -->
     <div class="mt-4 d-flex justify-space-between">
