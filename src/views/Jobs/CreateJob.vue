@@ -1,37 +1,21 @@
 <template>
-  <h1>Sample Page</h1>
   <cd-stepper :steps="stepData" :onNext="handleNext" :onPrev="handlePrev"></cd-stepper>
-  <v-container class="my-3 px-0">
-    <cd-text-input
-      :label="'Your landing page'"
-      :hint="'www.example.com/page'"
-      :persistent-hint="true"
-      @update:modelValue="onInputChange"
-    ></cd-text-input>
-  </v-container>
-  <v-container class="my-3 px-0">
-    <cd-rich-text-editor />
-  </v-container>
-  <v-file-upload clearable density="comfortable" variant="comfortable"></v-file-upload>
 </template>
 
 <script lang="ts">
 import CdStepper from '@/components/molecules/CdStepper.vue'
-import { CdTextInput } from '@/components/atoms'
-import { CdRichTextEditor } from '@/components/molecules'
+import JobDescription from './tabs/step1/JobDescription.vue'
 
 export default {
   components: {
     'cd-stepper': CdStepper,
-    'cd-text-input': CdTextInput,
-    'cd-rich-text-editor': CdRichTextEditor,
   },
   data() {
     return {
       stepData: [
         {
           title: 'Job Description',
-          content: '<div>Content for Job Description</div>',
+          content: JobDescription,
         },
         {
           title: 'Form',
@@ -68,9 +52,6 @@ export default {
     handlePrev(currentStep: number) {
       console.log('Previous clicked on step:', currentStep)
       return true // allow going back
-    },
-    onInputChange(value: string) {
-      console.log('text field updated:', value)
     },
   },
 }
