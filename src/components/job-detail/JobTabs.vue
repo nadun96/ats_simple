@@ -15,5 +15,16 @@ const props = defineProps<{ selectedTab: string }>()
 const emit = defineEmits(['update-tab'])
 
 const tab = ref(props.selectedTab)
-watch(tab, (val) => emit('update-tab', val))
+
+// ✅ Emit tab change to parent
+watch(tab, (val) => {
+  emit('update-tab', val)
+})
+
+// ✅ Keep tab in sync when parent changes selectedTab
+watch(() => props.selectedTab, (newVal) => {
+  if (tab.value !== newVal) {
+    tab.value = newVal
+  }
+})
 </script>

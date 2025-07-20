@@ -13,7 +13,11 @@
 
       <!-- Attached files preview -->
       <div class="attachments">
-        <div v-for="(file, index) in attachedFiles" :key="index" class="file-tag">
+        <div
+          v-for="(file, index) in attachedFiles"
+          :key="index"
+          class="file-tag"
+        >
           {{ file.name }}
           <span class="remove" @click="removeAttachment(index)">×</span>
         </div>
@@ -22,11 +26,11 @@
       <!-- Action buttons -->
       <div class="actions">
         <div>
-            <button @click="triggerFileUpload" class="icon-button">@</button>
-            <button @click="triggerEmojiPicker" class="icon-button">😊</button>
-            <button @click="triggerFileUpload" class="icon-button">📎</button>
+          <button @click="triggerFileUpload" class="icon-button">@</button>
+          <button @click="triggerEmojiPicker" class="icon-button">😊</button>
+          <button @click="triggerFileUpload" class="icon-button">📎</button>
         </div>
-        
+
         <input
           type="file"
           ref="fileInput"
@@ -49,63 +53,61 @@
   </div>
 </template>
 
-<script>
-import ActivityCommentItem from "./ActivityCommentItem.vue";
+<script setup>
+import { ref } from 'vue'
+import ActivityCommentItem from './ActivityCommentItem.vue'
 
-export default {
-  name: "ActivitiesTab",
-  components: {
-    ActivityCommentItem,
-  },
-  data() {
-    return {
-      commentText: "",
-      attachedFiles: [],
-      activityList: [
-        {
-          user: "Shamika",
-          action: "joined recruiting",
-          date: "Jul 12, 2025",
-        },
-        {
-          user: "Nadun",
-          action: "created the recruitment",
-          date: "Jul 12, 2025",
-        },
-      ],
-    };
-  },
-  methods: {
-    triggerFileUpload() {
-      this.$refs.fileInput.click();
-    },
-    handleFileChange(event) {
-      const files = Array.from(event.target.files);
-      this.attachedFiles.push(...files);
-      event.target.value = null; // Reset
-    },
-    removeAttachment(index) {
-      this.attachedFiles.splice(index, 1);
-    },
-    triggerEmojiPicker() {
-      alert("Emoji picker not implemented.");
-    },
-    submitComment() {
-      if (!this.commentText.trim()) return;
+// Reactive state
+const commentText = ref('')
+const attachedFiles = ref([])
+const fileInput = ref(null)
 
-      const newComment = {
-        user: "You",
-        action: this.commentText,
-        date: new Date().toDateString(),
-        attachments: this.attachedFiles.map((f) => f.name),
-      };
-
-      this.activityList.unshift(newComment);
-      this.commentText = "";
-      this.attachedFiles = [];
-    },
+const activityList = ref([
+  {
+    user: 'Shamika',
+    action: 'joined recruiting',
+    date: 'Jul 12, 2025',
   },
-};
+  {
+    user: 'Nadun',
+    action: 'created the recruitment',
+    date: 'Jul 12, 2025',
+  },
+])
+
+// Methods
+const triggerFileUpload = () => {
+  fileInput.value.click()
+}
+
+const handleFileChange = (event) => {
+  const files = Array.from(event.target.files)
+  attachedFiles.value.push(...files)
+  event.target.value = null // Reset file input
+}
+
+const removeAttachment = (index) => {
+  attachedFiles.value.splice(index, 1)
+}
+
+const triggerEmojiPicker = () => {
+  alert('Emoji picker not implemented.')
+}
+
+const submitComment = () => {
+  if (!commentText.value.trim()) return
+
+  const newComment = {
+    user: 'You',
+    action: commentText.value,
+    date: new Date().toDateString(),
+    attachments: attachedFiles.value.map((f) => f.name),
+  }
+
+  activityList.value.unshift(newComment)
+  commentText.value = ''
+  attachedFiles.value = []
+}
 </script>
 
 <style scoped>

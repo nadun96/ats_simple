@@ -150,7 +150,7 @@ import { ref } from 'vue'
 
 const props = defineProps<{
   job: {
-    id: string
+    id: number
     title: string
     location: string
     date: string
