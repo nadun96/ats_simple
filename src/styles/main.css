@@ -8,6 +8,15 @@
   padding: 0;
   font-weight: normal;
   min-height: 100vh;
+  max-width: none !important;
+  overflow-x: hidden;
+}
+
+.v-container {
+  padding: 0 !important;
+  width: 100%;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
 
 a,
@@ -27,14 +36,12 @@ a,
 /* Tablet and desktop styles */
 @media (min-width: 768px) {
   #app {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 !important;
   }
 }
 
 @media (min-width: 1024px) {
   #app {
-    padding: 0 2rem;
+    padding: 0 !important;
   }
 }
