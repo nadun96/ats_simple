@@ -3,7 +3,8 @@ import HomeView from '@/views/HomeView.vue'
 
 import Recruitment from '@/views/Recruitment.vue'
 import SampleView from '@/views/SampleView.vue'
-import DefaultLayout from '@/layouts/DefaultLayout.vue' // 🔁 Add this layout wrapper
+import JobDetail from '@/views/JobDetail.vue' // ✅ Import Job Detail view
+import DefaultLayout from '@/layouts/DefaultLayout.vue' // 🔁📦 Layout with HeaderView
 import CreateJob from '@/views/Jobs/CreateJob.vue'
 
 const router = createRouter({
@@ -11,8 +12,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-
-      component: DefaultLayout, // 🧩 HeaderView is inside this layout
+      component: DefaultLayout, // ⬅️ Wrap all routes that use HeaderView
       children: [
         {
           path: '',
@@ -35,6 +35,14 @@ const router = createRouter({
           component: SampleView,
         },
       ],
+    },
+
+    // 🔹 Separate route for Job Detail — uses its own full-screen layout
+    {
+      path: '/recruitment/:id',
+      name: 'job-detail',
+      component: JobDetail, // no DefaultLayout — clean layout
+      props: true // allows passing :id as prop
     },
   ],
 })
