@@ -1,0 +1,31 @@
+{
+  "quickActions": [
+    {
+      "title": "New Recruitment",
+      "description": "Start a new recruitment process and post job openings.",
+      "icon": "mdi-account-plus",
+      "color": "primary",
+      "buttonText": "Create Job"
+    },
+    {
+      "title": "Browse CVs",
+      "description": "Search and review candidate profiles in your CV library.",
+      "icon": "mdi-file-document-multiple",
+      "color": "success",
+      "buttonText": "Browse CVs"
+    },
+    {
+      "title": "View Analytics",
+      "description": "Track your recruitment performance and metrics.",
+      "icon": "mdi-chart-line",
+      "color": "info",
+      "buttonText": "View Reports"
+    }
+  ],
+  "stats": [
+    { "value": "26", "label": "Active Jobs" },
+    { "value": "156", "label": "Candidates" },
+    { "value": "12", "label": "Interviews" },
+    { "value": "8", "label": "Offers" }
+  ]
+}
