@@ -2,6 +2,7 @@
   <v-app>
     <AppHeader @toggle-drawer="drawer = !drawer" />
     <MobileDrawer v-model="drawer" />
+
     <v-main>
       <v-container fluid class="full-width-container">
         <router-view />

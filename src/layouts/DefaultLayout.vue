@@ -1,6 +1,6 @@
 <template>
   <div class="default-layout">
-    <HeaderView />
+    <!-- <AppHeader /> -->
 
     <!-- Main Content Area -->
     <v-main>
@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import HeaderView from '@/views/HeaderView.vue';
+// import AppHeader from '@/components/layout/AppHeader.vue'
 </script>
 
 <style scoped>
