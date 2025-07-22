@@ -1,5 +1,8 @@
 <template>
   <div class="home-view">
+
+
+    <!-- Main Content Area -->
     <v-main>
       <v-container fluid class="centered-container">
         <v-row no-gutters justify="center">
