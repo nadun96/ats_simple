@@ -5,6 +5,7 @@
 <script lang="ts">
 import CdStepper from '@/components/molecules/CdStepper.vue'
 import JobDescription from './tabs/step1/JobDescription.vue'
+import Workflow from './tabs/step3/WorkFlow.vue'
 
 export default {
   components: {
@@ -23,7 +24,7 @@ export default {
         },
         {
           title: 'Workflow',
-          content: '<div>Content for Workflow</div>',
+          content: Workflow,
         },
         {
           title: 'Job Team',
