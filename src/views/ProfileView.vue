@@ -1,19 +1,5 @@
 <template>
-  <AppSidebar :showSidebar="true" :drawer="drawer" @update:drawer="drawer = $event">
-    <template #sidebar>
-      <v-list dense nav class="py-4">
-        <v-list-item to="/profile/information" prepend-icon="mdi-account" class="mb-2" active>
-          <v-list-item-title class="text-subtitle-1">Profile</v-list-item-title>
-        </v-list-item>
-        <v-list-item to="/notifications" prepend-icon="mdi-bell" class="mb-2">
-          <v-list-item-title class="text-subtitle-1">Notifications</v-list-item-title>
-        </v-list-item>
-        <v-list-item to="/calendar" prepend-icon="mdi-calendar" class="mb-2">
-          <v-list-item-title class="text-subtitle-1">Calendar</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </template>
-
+  <AppSidebar :showSidebar="true" sidebarTitle="Profile" :sidebarItems="sidebarItems">
     <v-container fluid class="pa-4 pa-md-6">
       <div class="profile-header d-flex align-center mb-4">
         <v-icon size="28" class="mr-2" color="primary">mdi-account-circle</v-icon>
@@ -48,12 +34,17 @@ import { useRoute } from 'vue-router'
 import AppSidebar from '@/components/layout/AppSidebar.vue'
 
 const route = useRoute()
-const drawer = ref(false)
 
 const tabs = [
   { name: 'information', label: 'My Information' },
   { name: 'signature', label: 'My Signature' },
   { name: 'security', label: 'Security' },
+]
+
+const sidebarItems = [
+  { name: 'information', label: 'Profile', icon: 'mdi-account', to: '/profile/information' },
+  { name: 'notifications', label: 'Notifications', icon: 'mdi-bell', to: '/notifications' },
+  { name: 'calendar', label: 'Calendar', icon: 'mdi-calendar', to: '/calendar' },
 ]
 
 const tab = ref(route.name)
@@ -70,7 +61,6 @@ watch(
 .profile-header {
   font-weight: 600;
   font-size: 1.5rem;
-  color: var(--vt-c-primary);
 }
 
 .profile-tabs {

@@ -1,22 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
-import Recruitment from '@/views/Recruitment.vue'
+import Recruitment from '@/views/RecruitmentView.vue'
 import SampleView from '@/views/SampleView.vue'
-import JobDetail from '@/views/JobDetail.vue' // ✅ Import Job Detail view
+import JobDetail from '@/views/JobDetail.vue'
 import CreateJob from '@/views/Jobs/CreateJob.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import MyInformation from '@/components/profile/MyInformation.vue'
 import MySignature from '@/components/profile/MySignature.vue'
 import MySecurity from '@/components/profile/MySecurity.vue'
-import DefaultLayout from '@/components/layout/DefaultLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      component: DefaultLayout, // ⬅️ Wrap all routes that use HeaderView
       children: [
         {
           path: '',
