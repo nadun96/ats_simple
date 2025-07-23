@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="2" class="mt-6 pa-4 rounded-lg">
-    <form @submit.prevent="submitForm">
+    <form>
       <div class="text-h6 font-weight-bold">The Society</div>
       <v-divider class="my-2"></v-divider>
       <v-container>
@@ -8,12 +8,6 @@
           <v-col cols="8">
             <v-row>
               <v-col cols="6">
-                <!-- <CdTextInput
-                :label="'Company Name'"
-                :placeholder="'Enter the name of your company'"
-                :required="true"
-                @update:modelValue="onInputChange"
-              ></CdTextInput> -->
                 <CdTextInput
                   :label="'Company Name'"
                   :placeholder="'Enter the name of your company'"
@@ -78,27 +72,10 @@ import { ref } from 'vue'
 
 const firstName = ref('')
 import { reactive } from 'vue'
-import useVuelidate from '@vuelidate/core'
-import { required } from '@vuelidate/validators'
 
 const formData = reactive({
   companyName: '',
 })
-
-const rules = {
-  companyName: { required },
-}
-
-const v$ = useVuelidate(rules, formData)
-
-const submitForm = async () => {
-  const result = await v$.value.$validate()
-  if (result) {
-    alert('success' + formData.companyName)
-  } else {
-    alert('error')
-  }
-}
 
 const onInputChange = (value: string) => {
   console.log('text field updated:', value)

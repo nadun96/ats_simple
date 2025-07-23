@@ -1,55 +1,107 @@
 <template>
-  <v-card class="main-container">
-    <div>New</div>
-    <v-container class="action-container">
-      <v-btn class="action-icon" icon>
-        <v-icon>mdi-lightning-bolt</v-icon>
-      </v-btn>
-    </v-container>
-  </v-card>
-  <v-card class="main-container">
-    <div>New</div>
-    <v-container class="action-container">
-      <v-btn class="action-icon" icon>
-        <v-icon>mdi-lightning-bolt</v-icon>
-      </v-btn>
-      <div class="menu-icon">
-        <v-icon>mdi-dots-horizontal</v-icon>
-        <v-menu v-model="menu" activator="parent" location="bottom end" offset="4">
-          <v-list
-            bg-color="surface-light"
-            class="d-flex flex-column ga-1 pa-1"
-            density="compact"
-            rounded="lg"
-            variant="text"
-            slim
-          >
-            <v-list-item
-              prepend-icon="mdi-pencil"
-              rounded="lg"
-              title="Rename"
-              link
-            ></v-list-item>
+  <v-container>
+    <CdButton text="Add New" @click="handleAddWorkflow" />
+  </v-container>
 
-            <v-list-item
-              prepend-icon="mdi-delete"
-              rounded="lg"
-              title="Delete"
-              link
-            ></v-list-item>
-          </v-list>
-        </v-menu>
-      </div>
-    </v-container>
-  </v-card>
+  <WorkflowCard
+    v-for="(item, index) in workflowItems"
+    :key="index"
+    :item="item"
+    @delete="handleDeleteWorkflow"
+    @rename="handleRenameWorkflow"
+  />
+  <v-dialog v-model="renameDialogVisible" persistent max-width="400px">
+    <v-card>
+      <v-card-title>Rename the step</v-card-title>
+      <v-divider></v-divider>
+      <v-container>
+        <CdTextInput label="Step name" :required="true" v-model="newTitle" />
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer />
+           <CdButton text="Cancel" @click="renameDialogVisible = false" />
+           <CdButton text="Save" variant="elevated" @click="applyRename"  />
+        </v-card-actions>
+      </v-container>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
-import { shallowRef } from 'vue'
+import { ref } from 'vue'
+import WorkflowCard from '../components/WorkflowCard.vue'
+import { CdButton, CdTextInput } from '@/components/atoms'
+import type { WorkflowItem } from '@/types/interfaces/work-flow-types'
+const renameDialogVisible = ref(false)
+const renameTarget = ref<{ id: number; title: string } | null>(null)
+const newTitle = ref('')
 
-const menu = shallowRef(false)
+let idCounter = 1
 
+const workflowItems = ref<WorkflowItem[]>([
+  {
+    id: idCounter++,
+    title: 'Workflow 1',
+    mainAction: () => console.log('Action for Workflow 1'),
+  },
+  {
+    id: idCounter++,
+    title: 'Workflow 2',
+    mainAction: () => console.log('Action for Workflow 2'),
+    dropDownActions: [
+      {
+        icon: 'mdi-pencil',
+        actionName: 'Rename',
+        action: () => console.log('Rename Workflow 2'),
+      },
+      {
+        icon: 'mdi-delete',
+        actionName: 'Delete',
+        action: () => console.log('Delete Workflow 2'),
+      },
+    ],
+  },
+])
 
+const handleAddWorkflow = () => {
+  const id = idCounter++
+  workflowItems.value.push({
+    id,
+    title: `New Workflow`,
+    mainAction: () => console.log(`Main action for Workflow ${id}`),
+    dropDownActions: [
+      {
+        icon: 'mdi-pencil',
+        actionName: 'Rename',
+        action: () => console.log(`Rename Workflow ${id}`),
+      },
+      {
+        icon: 'mdi-delete',
+        actionName: 'Delete',
+      },
+    ],
+  })
+}
+
+const handleDeleteWorkflow = (id: number) => {
+  workflowItems.value = workflowItems.value.filter((item) => item.id !== id)
+}
+
+const handleRenameWorkflow = (payload: { id: number; title: string }) => {
+  renameTarget.value = payload
+  newTitle.value = payload.title
+  renameDialogVisible.value = true
+}
+
+const applyRename = () => {
+  if (renameTarget.value) {
+    const item = workflowItems.value.find((i) => i.id === renameTarget.value?.id)
+    if (item) {
+      item.title = newTitle.value
+    }
+  }
+  renameDialogVisible.value = false
+}
 </script>
 
 <style scoped>
@@ -58,9 +110,9 @@ const menu = shallowRef(false)
   padding-inline: 10px;
   border-radius: 5px;
   margin-block: 10px;
+}
+.title-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
 }
 .action-container {
