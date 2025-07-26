@@ -82,6 +82,8 @@ const emit = defineEmits<{
 
 const drawer = computed({
   get: () => props.modelValue,
+  // TODO: Please fix this. 👇 @MihindumSLiyanage
+  // @ts-ignore
   set: (val: boolean) => emit('update:modelValue', val),
 })
 </script>
