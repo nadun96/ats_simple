@@ -1,6 +1,5 @@
 <template>
   <h1>Sample Page</h1>
-  <cd-stepper :steps="stepData" :onNext="handleNext" :onPrev="handlePrev"></cd-stepper>
   <v-container class="my-3 px-0">
     <cd-text-input
       :label="'Your landing page'"
@@ -16,13 +15,11 @@
 </template>
 
 <script lang="ts">
-import CdStepper from '@/components/molecules/CdStepper.vue'
 import { CdTextInput } from '@/components/atoms'
 import { CdRichTextEditor } from '@/components/molecules'
 
 export default {
   components: {
-    'cd-stepper': CdStepper,
     'cd-text-input': CdTextInput,
     'cd-rich-text-editor': CdRichTextEditor,
   },

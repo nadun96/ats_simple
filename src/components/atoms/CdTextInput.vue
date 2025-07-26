@@ -24,7 +24,7 @@ const props = withDefaults(
     required?: boolean
     persistentHint?: boolean
     rules?: Array<(value: string) => boolean | string>
-    modelValue: string
+    modelValue?: string
   }>(),
   {
     variant: 'outlined',
