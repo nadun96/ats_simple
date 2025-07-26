@@ -10,6 +10,12 @@
     @delete="handleDeleteWorkflow"
     @rename="handleRenameWorkflow"
   />
+  <div class="mt-4 d-flex justify-space-between">
+    <v-btn @click="$emit('prev')" variant="outlined" color="primary"
+      >Previous</v-btn
+    >
+    <v-btn @click="$emit('next')" color="primary">Next</v-btn>
+  </div>
   <v-dialog v-model="renameDialogVisible" persistent max-width="400px">
     <v-card>
       <v-card-title>Rename the step</v-card-title>

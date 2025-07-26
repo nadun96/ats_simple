@@ -27,54 +27,25 @@
           v-if="typeof steps[activeStep - 1].content === 'string'"
           v-html="steps[activeStep - 1].content"
         ></div>
-        <component v-else :is="steps[activeStep - 1].content" />
-
-        <!-- Navigation -->
-        <div class="mt-4 d-flex justify-space-between">
-          <v-btn :disabled="activeStep === 1" @click="prevStep" variant="outlined" color="primary"
-            >Previous</v-btn
-          >
-          <v-btn :disabled="activeStep === steps.length" @click="nextStep" color="primary"
-            >Next</v-btn
-          >
-        </div>
+        <component v-else :is="steps[activeStep - 1].content" @next="emitNext" @prev="emitPrev" />
       </div>
     </v-col>
   </v-row>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const props = defineProps<{
+defineProps<{
   steps: {
     title: string
     content: string | object
   }[]
-  onNext?: (currentStep: number) => boolean | Promise<boolean> | void
-  onPrev?: (currentStep: number) => boolean | Promise<boolean> | void
+  activeStep: number
 }>()
 
-const steps = props.steps
-const activeStep = ref(1)
+const emit = defineEmits(['next', 'prev'])
 
-const nextStep = async () => {
-  if (activeStep.value < steps.length) {
-    const proceed = props.onNext ? await props.onNext(activeStep.value) : true
-    if (proceed !== false) {
-      activeStep.value++
-    }
-  }
-}
-
-const prevStep = async () => {
-  if (activeStep.value > 1) {
-    const proceed = props.onPrev ? await props.onPrev(activeStep.value) : true
-    if (proceed !== false) {
-      activeStep.value--
-    }
-  }
-}
+const emitNext = () => emit('next')
+const emitPrev = () => emit('prev')
 </script>
 
 <style scoped>

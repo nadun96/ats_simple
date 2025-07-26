@@ -2,8 +2,13 @@
   <div class="mb-1">
     <CdLabel v-if="label" :label="label" :required="required" />
   </div>
-
-  <QuillEditor theme="snow" toolbar="essential" style="height: 300px" />
+  <QuillEditor
+    theme="snow"
+    toolbar="essential"
+    style="height: 300px"
+    :rules="rules"
+    @update:modelValue="$emit('update:modelValue', $event)"
+  />
 </template>
 
 <script setup lang="ts">
@@ -15,5 +20,6 @@ import { CdLabel } from '../atoms'
 defineProps<{
   label?: string
   required?: boolean
+  rules?: Array<(value: string) => boolean | string>
 }>()
 </script>
