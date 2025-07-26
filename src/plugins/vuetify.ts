@@ -1,10 +1,8 @@
-// src/plugins/vuetify.js
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
-import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
 import { VFileUpload } from 'vuetify/labs/VFileUpload'
 
@@ -19,9 +17,9 @@ export const vuetify = createVuetify({
     themes: {
       light: {
         colors: {
-          primary: '#d32f2f', // Red primary color
-          secondary: '#f44336', // Red secondary
-          accent: '#ff1744', // Red accent
+          primary: '#d32f2f',
+          secondary: '#f44336',
+          accent: '#ff1744',
           error: '#f44336',
           warning: '#ff9800',
           info: '#2196f3',
@@ -32,9 +30,9 @@ export const vuetify = createVuetify({
       },
       dark: {
         colors: {
-          primary: '#f44336', // Red primary for dark theme
-          secondary: '#e57373', // Light red secondary
-          accent: '#ff5722', // Red-orange accent
+          primary: '#f44336',
+          secondary: '#e57373',
+          accent: '#ff5722',
           error: '#f44336',
           warning: '#ff9800',
           info: '#2196f3',
@@ -48,8 +46,8 @@ export const vuetify = createVuetify({
   icons: {
     defaultSet: 'mdi',
     aliases,
-    sets: {
-      mdi,
-    },
+    sets: { mdi },
   },
 })
+
+export default vuetify

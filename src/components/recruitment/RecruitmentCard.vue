@@ -52,9 +52,7 @@
         <v-btn size="small" variant="text" icon>
           <v-icon>mdi-tag</v-icon>
         </v-btn>
-        <v-btn size="small" variant="outlined" class="ml-1">
-          Promote
-        </v-btn>
+        <v-btn size="small" variant="outlined" class="ml-1"> Promote </v-btn>
 
         <!-- 3-dot Menu -->
         <v-menu offset-y>
@@ -148,7 +146,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const props = defineProps<{
+defineProps<{
   job: {
     id: number
     title: string
@@ -180,7 +178,7 @@ const progressLabels = [
   'Evalué par téléphone',
   'Entretien passé',
   'Offre faite',
-  'Embauché'
+  'Embauché',
 ]
 
 const onLabelClick = (label: string) => {

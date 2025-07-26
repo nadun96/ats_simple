@@ -1,18 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
-import Recruitment from '@/views/Recruitment.vue'
+import Recruitment from '@/views/RecruitmentView.vue'
 import SampleView from '@/views/SampleView.vue'
-import JobDetail from '@/views/JobDetail.vue' // ✅ Import Job Detail view
-import DefaultLayout from '@/layouts/DefaultLayout.vue' // 🔁📦 Layout with HeaderView
+import JobDetail from '@/views/JobDetail.vue'
 import CreateJob from '@/views/Jobs/CreateJob.vue'
+import ProfileView from '@/views/ProfileView.vue'
+import MyInformation from '@/components/profile/MyInformation.vue'
+import MySignature from '@/components/profile/MySignature.vue'
+import MySecurity from '@/components/profile/MySecurity.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      component: DefaultLayout, // ⬅️ Wrap all routes that use HeaderView
       children: [
         {
           path: '',
@@ -42,7 +44,30 @@ const router = createRouter({
       path: '/recruitment/:id',
       name: 'job-detail',
       component: JobDetail, // no DefaultLayout — clean layout
-      props: true // allows passing :id as prop
+      props: true, // allows passing :id as prop
+    },
+
+    {
+      path: '/profile',
+      component: ProfileView,
+      children: [
+        { path: '', redirect: 'information' },
+        {
+          path: 'information',
+          name: 'information',
+          component: MyInformation,
+        },
+        {
+          path: 'signature',
+          name: 'signature',
+          component: MySignature,
+        },
+        {
+          path: 'security',
+          name: 'security',
+          component: MySecurity,
+        },
+      ],
     },
   ],
 })
