@@ -77,7 +77,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const emit = defineEmits<{
-  'update:modelValue': (value: boolean) => void
+  'update:modelValue': [value: boolean]
 }>()
 
 const drawer = computed({
