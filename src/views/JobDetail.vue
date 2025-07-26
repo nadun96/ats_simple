@@ -4,14 +4,15 @@
     <!-- Left Sidebar with job list -->
     <JobDetailSidebar
       :jobs="jobs"
-      v-model:selectedJobId="selectedJobId"
+      :model-value="selectedJobId"
       :collapsed="sidebarCollapsed"
+      @update:selectedJobId="selectedJobId = $event"
       @toggle-collapse="sidebarCollapsed = !sidebarCollapsed"
     />
 
     <!-- Main Content -->
     <v-main>
-      <JobDetailHeader :job="selectedJob" />
+      <JobDetailHeader v-if="selectedJob" :job="selectedJob" />
 
       <!-- Tabs -->
       <JobTabs :selectedTab="selectedTab" @update-tab="selectedTab = $event" />
