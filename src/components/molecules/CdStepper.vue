@@ -1,40 +1,46 @@
 <template>
-  <div>
-    <!-- Stepper Header -->
-    <div class="custom-stepper">
-      <div
-        v-for="(step, index) in steps"
-        :key="index"
-        class="step-item"
-        :class="{
-          active: activeStep === index + 1,
-          completed: activeStep > index + 1,
-        }"
-      >
-        <div class="step-circle">
-          <span v-if="activeStep > index + 1">✔</span>
-          <span v-else>{{ index + 1 }}</span>
+  <v-row>
+    <v-col cols="10" offset="1">
+      <div>
+        <!-- Stepper Header -->
+        <div class="custom-stepper">
+          <div
+            v-for="(step, index) in steps"
+            :key="index"
+            class="step-item"
+            :class="{
+              active: activeStep === index + 1,
+              completed: activeStep > index + 1,
+            }"
+          >
+            <div class="step-circle">
+              <span v-if="activeStep > index + 1">✔</span>
+              <span v-else>{{ index + 1 }}</span>
+            </div>
+            <div class="step-title">{{ step.title }}</div>
+            <div v-if="index !== steps.length - 1" class="step-line" />
+          </div>
         </div>
-        <div class="step-title">{{ step.title }}</div>
-        <div v-if="index !== steps.length - 1" class="step-line" />
+
+        <!-- Step Content -->
+        <div
+          v-if="typeof steps[activeStep - 1].content === 'string'"
+          v-html="steps[activeStep - 1].content"
+        ></div>
+        <component v-else :is="steps[activeStep - 1].content" />
+
+        <!-- Navigation -->
+        <div class="mt-4 d-flex justify-space-between">
+          <v-btn :disabled="activeStep === 1" @click="prevStep" variant="outlined" color="primary"
+            >Previous</v-btn
+          >
+          <v-btn :disabled="activeStep === steps.length" @click="nextStep" color="primary"
+            >Next</v-btn
+          >
+        </div>
       </div>
-    </div>
-
-    <!-- Step Content -->
-    <div
-      v-if="typeof steps[activeStep - 1].content === 'string'"
-      v-html="steps[activeStep - 1].content"
-    ></div>
-    <component v-else :is="steps[activeStep - 1].content" />
-
-    <!-- Navigation -->
-    <div class="mt-4 d-flex justify-space-between">
-      <v-btn :disabled="activeStep === 1" @click="prevStep" variant="outlined" color="primary"
-        >Previous</v-btn
-      >
-      <v-btn :disabled="activeStep === steps.length" @click="nextStep" color="primary">Next</v-btn>
-    </div>
-  </div>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup lang="ts">
