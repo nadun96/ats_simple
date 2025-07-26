@@ -15,12 +15,14 @@
       <v-card-title>Rename the step</v-card-title>
       <v-divider></v-divider>
       <v-container>
-        <CdTextInput label="Step name" :required="true" v-model="newTitle" />
+        <v-col>
+          <CdTextInput label="Step name" :required="true" v-model="newTitle" />
+        </v-col>
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer />
-           <CdButton text="Cancel" @click="renameDialogVisible = false" />
-           <CdButton text="Save" variant="elevated" @click="applyRename"  />
+          <CdButton text="Cancel" @click="renameDialogVisible = false" />
+          <CdButton text="Save" variant="elevated" @click="applyRename" />
         </v-card-actions>
       </v-container>
     </v-card>
@@ -28,10 +30,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import WorkflowCard from '../components/WorkflowCard.vue'
 import { CdButton, CdTextInput } from '@/components/atoms'
 import type { WorkflowItem } from '@/types/interfaces/work-flow-types'
+import { ref } from 'vue'
+import WorkflowCard from '../components/WorkflowCard.vue'
 const renameDialogVisible = ref(false)
 const renameTarget = ref<{ id: number; title: string } | null>(null)
 const newTitle = ref('')
