@@ -37,9 +37,12 @@
 
         <!-- Job title and location -->
         <div>
-          <div class="font-weight-bold text-body-1 text-truncate job-title">
+          <router-link
+            :to="{ name: 'job-detail', params: { id: job.id } }"
+            class="font-weight-bold text-body-1 text-truncate job-title clickable-title"
+          >
             {{ job.title }}
-          </div>
+          </router-link>
           <div class="text-caption text-grey-darken-1">{{ job.location }}</div>
         </div>
       </v-col>
@@ -49,9 +52,7 @@
         <v-btn size="small" variant="text" icon>
           <v-icon>mdi-tag</v-icon>
         </v-btn>
-        <v-btn size="small" variant="outlined" class="ml-1">
-          Promote
-        </v-btn>
+        <v-btn size="small" variant="outlined" class="ml-1"> Promote </v-btn>
 
         <!-- 3-dot Menu -->
         <v-menu offset-y>
@@ -145,8 +146,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const props = defineProps<{
+defineProps<{
   job: {
+    id: number
     title: string
     location: string
     date: string
@@ -176,7 +178,7 @@ const progressLabels = [
   'Evalué par téléphone',
   'Entretien passé',
   'Offre faite',
-  'Embauché'
+  'Embauché',
 ]
 
 const onLabelClick = (label: string) => {
@@ -190,6 +192,16 @@ const onLabelClick = (label: string) => {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.clickable-title {
+  cursor: pointer;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.clickable-title:hover {
+  text-decoration: underline;
 }
 
 .flex-nowrap {

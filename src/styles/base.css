@@ -1,0 +1,101 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --vt-c-white: #ffffff;
+  --vt-c-white-soft: #f9fafb;
+  --vt-c-white-mute: #f3f4f6;
+
+  --vt-c-black: #111827;
+  --vt-c-black-soft: #1f2a44;
+  --vt-c-black-mute: #374151;
+
+  --vt-c-primary: #2563eb;
+  --vt-c-primary-dark: #1d4ed8;
+  --vt-c-secondary: #6b7280;
+  --vt-c-accent: #10b981;
+  --vt-c-error: #ef4444;
+  --vt-c-warning: #f59e0b;
+  --vt-c-info: #3b82f6;
+  --vt-c-success: #22c55e;
+
+  --color-background: var(--vt-c-white);
+  --color-background-soft: var(--vt-c-white-soft);
+  --color-background-mute: var(--vt-c-white-mute);
+  --color-border: #e5e7eb;
+  --color-border-hover: #d1d5db;
+  --color-heading: var(--vt-c-black);
+  --color-text: var(--vt-c-black-soft);
+  --color-surface: var(--vt-c-white);
+
+  --section-gap: 160px;
+  --spacing-unit: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--vt-c-black);
+    --color-background-soft: var(--vt-c-black-soft);
+    --color-background-mute: var(--vt-c-black-mute);
+    --color-border: #374151;
+    --color-border-hover: #4b5563;
+    --color-heading: var(--vt-c-white);
+    --color-text: #d1d5db;
+    --color-surface: var(--vt-c-black-soft);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.v-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.v-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.v-btn {
+  border-radius: 6px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
