@@ -8,6 +8,7 @@
   </v-tabs>
 </template>
 
+
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 
@@ -16,15 +17,14 @@ const emit = defineEmits(['update-tab'])
 
 const tab = ref(props.selectedTab)
 
-// ✅ Emit tab change to parent
+// Sync local tab value when prop changes
+watch(() => props.selectedTab, (newVal) => {
+  tab.value = newVal
+})
+
+// Emit event when local tab changes
 watch(tab, (val) => {
   emit('update-tab', val)
 })
-
-// ✅ Keep tab in sync when parent changes selectedTab
-watch(() => props.selectedTab, (newVal) => {
-  if (tab.value !== newVal) {
-    tab.value = newVal
-  }
-})
 </script>
+

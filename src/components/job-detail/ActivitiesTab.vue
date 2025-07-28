@@ -56,6 +56,7 @@
 <script setup>
 import { ref } from 'vue'
 import ActivityCommentItem from './ActivityCommentItem.vue'
+defineOptions({ name: 'ActivitiesTab' }) // Optional but good for debugging
 
 // Reactive state
 const commentText = ref('')

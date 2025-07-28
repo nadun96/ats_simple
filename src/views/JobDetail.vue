@@ -3,11 +3,12 @@
   <v-container fluid class="pa-0 d-flex">
     <!-- Left Sidebar with job list -->
     <JobDetailSidebar
-      :jobs="jobs"
-      v-model:selectedJobId="selectedJobId"
-      :collapsed="sidebarCollapsed"
-      @toggle-collapse="sidebarCollapsed = !sidebarCollapsed"
-    />
+  v-model="selectedJobId"
+  :jobs="jobs"
+  :collapsed="collapsed"
+  @toggle-collapse="handleToggleCollapse"
+/>
+
 
     <!-- Main Content -->
     <v-main>
@@ -49,10 +50,25 @@ const selectedJobId = ref(1)
 const sidebarCollapsed = ref(false)
 const selectedTab = ref('applications')
 
+const collapsed = ref(false)
+
+function handleToggleCollapse(val: boolean) {
+  collapsed.value = val
+}
+
+
+
 // Computed job
-const selectedJob = computed(() =>
-  jobs.value.find(job => job.id === selectedJobId.value)
-)
+const selectedJob = computed(() => {
+  return (
+    jobs.value.find(job => job.id === selectedJobId.value) ?? {
+      title: '',
+      type: '',
+      location: ''
+    }
+  )
+})
+
 
 // Component mapping based on selectedTab
 const currentTabComponent = computed(() => {
