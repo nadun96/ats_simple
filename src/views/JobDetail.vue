@@ -11,7 +11,7 @@
     />
 
     <!-- Main Content -->
-    <v-main>
+    <v-main class="pa-5">
       <JobDetailHeader v-if="selectedJob" :job="selectedJob" />
 
       <!-- Tabs -->
