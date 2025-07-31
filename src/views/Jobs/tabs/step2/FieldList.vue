@@ -43,7 +43,7 @@ interface Field {
   icon?: string
 }
 
-const fields = ref<Field[]>([])
+const fields = ref<Field[]>([]) // <-- this is what we want to expose to parent
 const addingNew = ref(false)
 
 const newField = ref<Omit<Field, 'id'>>({
@@ -85,4 +85,9 @@ const updateField = (updatedField: Field) => {
 const deleteField = (id: number) => {
   fields.value = fields.value.filter(f => f.id !== id)
 }
+
+// ✅ Expose `fields` to parent via ref
+defineExpose({
+  fields,
+})
 </script>

@@ -8,7 +8,8 @@
       v-if="!isEditing"
     >
       <div class="d-flex align-center">
-        <v-img :src="dragIcon" width="20" class="mr-2" />
+        <!-- <v-img :src="dragIcon" width="20" class="mr-2" /> -->
+        <v-img width="20" class="mr-2" />
         <span>
           {{ fieldData.label }}
           <span v-if="fieldData.required" class="text-red font-weight-bold">*</span>
@@ -52,7 +53,7 @@ const emit = defineEmits<{
 }>()
 
 const isEditing = ref(false)
-const dragIcon = new URL('@/assets/icons/drag.png', import.meta.url).href
+//const dragIcon = new URL('@/assets/icons/drag.png', import.meta.url).href
 
 const localField = ref({ ...props.field })
 const fieldData = ref({ ...props.field })

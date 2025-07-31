@@ -37,9 +37,10 @@
 </template>
 
 <script setup lang="ts">
-const label = defineModel('label', { required: true })
-const required = defineModel('required', { required: true })
-const type = defineModel('type', { required: true })
+// ✅ Explicitly type each defineModel binding
+const label = defineModel<string>('label', { required: true })
+const required = defineModel<boolean>('required', { required: true })
+const type = defineModel<string>('type', { required: true })
 
 defineEmits(['validate', 'cancel', 'delete'])
 

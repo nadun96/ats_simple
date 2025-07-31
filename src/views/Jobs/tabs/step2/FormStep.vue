@@ -1,4 +1,4 @@
-<!-- FieldStep.vue -->
+<!-- FormStep.vue -->
 <template>
   <div>
     <h1 class="text-h6 font-weight-bold pt-6">Creating the application form</h1>
@@ -9,10 +9,11 @@
     <v-container>
       <v-row class="align-center mb-4">
         <v-col cols="auto">
-          <v-img :src="rocketIcon" width="30" />
+          <!-- <v-img :src="rocketIcon" width="30" /> -->
+          <v-img width="30" />
         </v-col>
-        <v-col>
-          <div class="text-subtitle-1 font-weight-medium">Simplified application</div>
+        <v-col class="py-10">
+          <div class="text-subtitle-1 font-weight-medium ">Simplified application</div>
           <div class="text-caption">
             Candidates simply submit their CV and we collect the contact info
           </div>
@@ -48,10 +49,20 @@ import { ref } from 'vue'
 const isSimplified = ref(false)
 const selectedTemplate = ref('Classic Form Template')
 const templates = ['Classic Form Template', 'Minimal Form Template']
-const rocketIcon = new URL('@/assets/icons/rocket.png', import.meta.url).href
 
-// 👇 Reference to access fields from FieldList
-const fieldListRef = ref()
+// ✅ Define Field type (same as in FieldList.vue)
+interface Field {
+  id: number
+  label: string
+  type: string
+  required: boolean
+  icon?: string
+}
+
+// ✅ Type the ref properly to access exposed fields
+const fieldListRef = ref<{ fields: Field[] } | null>(null)
+
+const emit = defineEmits(['next', 'prev'])
 
 function handleNext() {
   const fields = fieldListRef.value?.fields || []
@@ -61,7 +72,8 @@ function handleNext() {
     return
   }
 
-  const formattedFields = fields.map(field => ({
+  // ✅ Type 'field' as Field
+  const formattedFields = fields.map((field: Field) => ({
     label: field.label,
     type: field.type,
     required: field.required
@@ -69,7 +81,7 @@ function handleNext() {
 
   console.log('✅ Form Data:', JSON.stringify(formattedFields, null, 2))
 
-  // You can emit next or navigate programmatically here
-  // $emit('next') if part of multi-step form
+  // Emit event to parent to move to next step
+  emit('next')
 }
 </script>
