@@ -9,8 +9,12 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item v-for="item in group.items" :key="item">
-          <v-list-item-title>{{ item }}</v-list-item-title>
+        <v-list-item
+          v-for="item in group.items"
+          :key="item.title"
+          @click="goTo(item.path)"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -20,16 +24,31 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import type { NavGroup } from '@/types/navigation'
 
+const router = useRouter()
+
+// ⬇️ updated to include paths
 const navGroups: NavGroup[] = [
   {
     title: 'Recruitments',
-    items: ['My Recruitments', 'My Applications', 'My Recruitment Requests'],
+    items: [
+      { title: 'My Recruitments', path: '/recruitment' },
+      { title: 'My Applications', path: '/recruitment/applications' },
+      { title: 'My Recruitment Requests', path: '/recruitment/requests' },
+    ],
   },
   {
     title: 'CV Library',
-    items: ['All Profiles'],
+    items: [
+      { title: 'All Profiles', path: '/cv-library' },
+    ],
   },
 ]
+
+// ⬇️ navigation function
+function goTo(path: string) {
+  router.push(path)
+}
 </script>

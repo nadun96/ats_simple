@@ -1,12 +1,13 @@
 export interface NavItem {
   title: string
-  icon: string
+  path: string
+  icon?: string
 }
 
 export interface NavGroup {
   title: string
   icon?: string
-  items: string[]
+  items: NavItem[]
 }
 
 export interface MenuItem {

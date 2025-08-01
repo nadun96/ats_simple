@@ -59,8 +59,8 @@
             <v-list-item-title>{{ group.title }}</v-list-item-title>
           </v-list-item>
         </template>
-        <v-list-item v-for="subItem in group.items" :key="subItem" link class="pl-12">
-          <v-list-item-title>{{ subItem }}</v-list-item-title>
+        <v-list-item v-for="subItem in group.items" :key="subItem.title" link class="pl-12">
+          <v-list-item-title>{{ subItem.title }}</v-list-item-title>
         </v-list-item>
       </v-list-group>
     </v-list>
