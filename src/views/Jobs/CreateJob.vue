@@ -8,7 +8,10 @@
 import CdStepper from '@/components/molecules/CdStepper.vue'
 import { h, type Component } from 'vue'
 import JobDescription from './tabs/step1/JobDescription.vue'
+import ApplicationForm from './tabs/step2/ApplicationForm.vue'
 import WorkFlow from './tabs/step3/WorkFlow.vue'
+import JobTeam from './tabs/step4/JobTeam.vue'
+import Promote from './tabs/step5/Promote.vue'
 
 // Define a union type for Vue component or renderable object
 type StepContent = Component | { render: () => ReturnType<typeof h> }
@@ -25,9 +28,7 @@ const stepData: Step[] = [
   },
   {
     title: 'Form',
-    content: {
-      render: () => h('div', 'Content for Form'),
-    },
+    content: ApplicationForm,
   },
   {
     title: 'Workflow',
@@ -35,15 +36,11 @@ const stepData: Step[] = [
   },
   {
     title: 'Job Team',
-    content: {
-      render: () => h('div', 'Content for Job Team'),
-    },
+    content: JobTeam,
   },
   {
     title: 'Promote',
-    content: {
-      render: () => h('div', 'Content for Promote'),
-    },
+    content: Promote,
   },
 ]
 
