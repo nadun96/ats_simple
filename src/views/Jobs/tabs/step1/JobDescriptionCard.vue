@@ -15,7 +15,7 @@ import CountryAndCitySelect from '@/views/Jobs/tabs/components/CountryAndCitySel
             label="Job title"
             placeholder="Space mission manager F/M"
             :required="true"
-          ></CdTextInput>
+          />
         </v-col>
         <v-col cols="4">
           <div class="text-subtitle-2 my-5">

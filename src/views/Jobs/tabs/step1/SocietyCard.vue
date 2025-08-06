@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="2" class="mt-6 pa-4 rounded-lg">
-    <form>
+    <v-form ref="formRef">
       <div class="text-h6 font-weight-bold">The Society</div>
       <v-divider class="my-2"></v-divider>
       <v-container>
@@ -12,6 +12,7 @@
                   :label="'Company Name'"
                   :placeholder="'Enter the name of your company'"
                   :required="true"
+                  :rules="validationRules.companyName"
                   v-model="formData.companyName"
                 ></CdTextInput>
               </v-col>
@@ -20,11 +21,15 @@
                   :label="'URL of your site'"
                   :placeholder="'Enter the URL of your company site'"
                   :required="true"
-                  @update:modelValue="onInputChange"
+                  :rules="validationRules.url"
+                  v-model="formData.url"
                 ></CdTextInput>
               </v-col>
               <v-col cols="12" class="mb-2">
-                <CdRichTextEditor label="Company description" :required="true" />
+                <CdRichTextEditor
+                  label="Company description"
+                  :required="true"
+                />
               </v-col>
             </v-row>
           </v-col>
@@ -53,12 +58,10 @@
             <div class="text-subtitle-2 mt-5">Banner (recommended size):</div>
             <div class="text-subtitle-2">1920x270px, up to 5 MB</div>
             <CdButton text="Banner Library" />
-            <BaseInput v-model="firstName" label="first name"></BaseInput>
-            <p>{{ firstName }}</p>
           </v-col>
         </v-row>
       </v-container>
-    </form>
+    </v-form>
   </v-card>
 </template>
 
@@ -66,18 +69,37 @@
 import { CdTextInput } from '@/components/atoms'
 import CdButton from '@/components/atoms/CdButton.vue'
 import CdDropzone from '@/components/atoms/CdDropzone.vue'
-import BaseInput from '@/components/BaseInput.vue'
 import { CdRichTextEditor } from '@/components/molecules'
-import { ref } from 'vue'
 
-const firstName = ref('')
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+
+const formRef = ref()
 
 const formData = reactive({
   companyName: '',
+  url: '',
 })
 
-const onInputChange = (value: string) => {
-  console.log('text field updated:', value)
+const validationRules = {
+  companyName: [
+    (v: string) => !!v || 'Company name is required',
+    (v: string) => v.length >= 3 || 'Minimum 3 characters required',
+  ],
+  url: [
+    (v: string) => !!v || 'URL is required',
+    (v: string) => /^(https?:\/\/)?([\w\-])+(\.[\w\-]+)+[/#?]?.*$/.test(v) || 'Enter a valid URL',
+  ],
+  // companyDescription: [(v: string) => !!v || 'Description is required'],
 }
+
+const isValid = async () => {
+  const result = await formRef.value?.validate?.()
+  return result?.valid ?? false
+}
+
+// expose form data and validation method
+defineExpose({
+  formData,
+  isValid,
+})
 </script>
