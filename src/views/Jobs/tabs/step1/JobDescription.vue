@@ -1,6 +1,15 @@
 <template>
   <SocietyCard ref="societyRef" />
   <JobDescriptionCard />
+  <JobSettingsCard />
+  <FurtherInformationCard />
+</template>
+
+<script setup lang="ts">
+import JobDescriptionCard from './JobDescriptionCard.vue';
+import SocietyCard from './SocietyCard.vue';
+import JobSettingsCard from './JobSettingsCard.vue';
+import FurtherInformationCard from './FurtherInformationCard.vue';
   <div class="mt-4 d-flex justify-space-between">
     <v-btn @click="handlePrev" variant="outlined" color="primary">Previous</v-btn>
     <v-btn @click="handleNext" color="primary" >Next</v-btn>

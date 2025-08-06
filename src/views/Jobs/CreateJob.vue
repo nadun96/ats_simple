@@ -8,7 +8,10 @@
 import { ref, h } from 'vue'
 import CdStepper from '@/components/molecules/CdStepper.vue'
 import JobDescription from './tabs/step1/JobDescription.vue'
+import ApplicationForm from './tabs/step2/ApplicationForm.vue'
 import WorkFlow from './tabs/step3/WorkFlow.vue'
+import JobTeam from './tabs/step4/JobTeam.vue'
+import Promote from './tabs/step5/Promote.vue'
 import FormStep from './tabs/step2/FormStep.vue'
 
 const activeStep = ref(1)
@@ -34,6 +37,7 @@ const stepData = [
   },
   {
     title: 'Form',
+    content: ApplicationForm,
     content: {
       render: () => h(FormStep, { ref: formStepRef }),
     },
@@ -46,15 +50,11 @@ const stepData = [
   },
   {
     title: 'Job Team',
-    content: {
-      render: () => h('div', 'Content for Job Team'),
-    },
+    content: JobTeam,
   },
   {
     title: 'Promote',
-    content: {
-      render: () => h('div', 'Content for Promote'),
-    },
+    content: Promote,
   },
 ]
 
