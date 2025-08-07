@@ -7,19 +7,41 @@ export const createItems: MenuItem[] = [
 ]
 
 export const navItems: NavItem[] = [
-  { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-  { title: 'Analysis', icon: 'mdi-chart-line' },
+  { title: 'Dashboard', icon: 'mdi-view-dashboard', path: '/dashboard' },
+  { title: 'Analysis', icon: 'mdi-chart-line', path: '/analysis' },
 ]
+
+// export const navGroups: NavGroup[] = [
+//   {
+//     title: 'Recruitments',
+//     icon: 'mdi-account-group',
+//     items: ['My Recruitments', 'My Applications', 'My Recruitment Requests'],
+//   },
+//   {
+//     title: 'CV Library',
+//     icon: 'mdi-file-document-multiple',
+//     items: ['Search CVs', 'Favorite CVs', 'Recent CVs'],
+//   },
+// ]
 
 export const navGroups: NavGroup[] = [
   {
     title: 'Recruitments',
     icon: 'mdi-account-group',
-    items: ['My Recruitments', 'My Applications', 'My Recruitment Requests'],
+    items: [
+      { title: 'My Recruitments', path: '/recruitment' },
+      { title: 'My Applications', path: '/recruitment/applications' },
+      { title: 'My Recruitment Requests', path: '/recruitment/requests' },
+    ],
   },
   {
     title: 'CV Library',
     icon: 'mdi-file-document-multiple',
-    items: ['Search CVs', 'Favorite CVs', 'Recent CVs'],
+    items: [
+      { title: 'Search CVs', path: '/cv-library/search' },
+      { title: 'Favorite CVs', path: '/cv-library/favorites' },
+      { title: 'Recent CVs', path: '/cv-library/recent' },
+    ],
   },
 ]
+
