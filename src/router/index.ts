@@ -5,6 +5,7 @@ import Recruitment from '@/views/RecruitmentView.vue'
 import SampleView from '@/views/SampleView.vue'
 import JobDetail from '@/views/JobDetail.vue'
 import CreateJob from '@/views/Jobs/CreateJob.vue'
+import JobAdPreview from '@/views/Jobs/JobAdPreview.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import MyInformation from '@/components/profile/MyInformation.vue'
 import MySignature from '@/components/profile/MySignature.vue'
@@ -30,6 +31,11 @@ const router = createRouter({
           path: 'job',
           name: 'job',
           component: CreateJob,
+        },
+        {
+          path: 'job/preview',
+          name: 'job-ad-preview',
+          component: JobAdPreview,
         },
         {
           path: 'sample',

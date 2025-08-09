@@ -203,6 +203,27 @@
                   </div>
                 </v-card>
               </div>
+              <div v-else-if="question.answerType === 'multiple_choice'">
+                <v-card variant="outlined" class="pa-3">
+                  <div v-for="(option, optIndex) in question.options" :key="optIndex" class="mb-2">
+                    <div class="d-flex align-center">
+                      <v-checkbox :label="option" disabled density="compact" hide-details />
+                    </div>
+                  </div>
+                </v-card>
+              </div>
+              <div v-else-if="question.answerType === 'text'">
+                <v-text-field variant="outlined" label="Your answer" disabled />
+              </div>
+              <div v-else-if="question.answerType === 'textarea'">
+                <v-textarea variant="outlined" label="Your answer" disabled />
+              </div>
+              <div v-else-if="question.answerType === 'number'">
+                <v-text-field variant="outlined" type="number" label="Number" disabled />
+              </div>
+              <div v-else-if="question.answerType === 'date'">
+                <v-text-field variant="outlined" type="date" label="Date" disabled />
+              </div>
             </v-col>
             <v-col cols="4" class="text-right">
               <v-btn
@@ -250,7 +271,7 @@
                   v-model="currentQuestion.answerType"
                 />
               </v-col>
-              <v-col cols="12" v-if="currentQuestion.answerType === 'single_choice'">
+              <v-col cols="12" v-if="currentQuestion.answerType === 'single_choice' || currentQuestion.answerType === 'multiple_choice'">
                 <div class="text-subtitle-2 mb-2">Options (one per line)</div>
                 <v-textarea
                   v-model="optionsText"
@@ -277,11 +298,47 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <!-- Preview Button and Live Preview -->
+    <div class="d-flex justify-end mb-3">
+      <v-btn variant="outlined" color="primary" @click="togglePreview">
+        {{ previewVisible ? 'Hide preview' : 'Preview form' }}
+      </v-btn>
+    </div>
+    <v-expand-transition>
+      <div v-if="previewVisible" ref="previewRef">
+        <v-card class="pa-6" variant="outlined">
+          <div class="text-h6 font-weight-medium mb-4">Form Preview</div>
+          <v-row>
+            <v-col cols="12" v-for="field in enabledFormFields" :key="field.id">
+              <component :is="previewComponentForField(field)" :label="field.label" :items="[]" variant="outlined" />
+            </v-col>
+            <v-col cols="12" v-for="q in customQuestions" :key="q.id">
+              <div class="mb-1 text-subtitle-2">{{ q.question }} <span v-if="q.required" class="text-error">*</span></div>
+              <div>
+                <v-radio-group v-if="q.answerType==='single_choice'" disabled>
+                  <v-radio v-for="(opt, i) in q.options" :key="i" :label="opt" :value="opt" />
+                </v-radio-group>
+                <div v-else-if="q.answerType==='multiple_choice'">
+                  <v-checkbox v-for="(opt, i) in q.options" :key="i" :label="opt" disabled />
+                </div>
+                <v-text-field v-else-if="q.answerType==='text'" variant="outlined" disabled />
+                <v-textarea v-else-if="q.answerType==='textarea'" variant="outlined" disabled />
+                <v-text-field v-else-if="q.answerType==='number'" type="number" variant="outlined" disabled />
+                <v-text-field v-else-if="q.answerType==='date'" type="date" variant="outlined" disabled />
+              </div>
+            </v-col>
+          </v-row>
+          <div class="d-flex justify-end mt-4">
+            <v-btn color="primary">Submit (preview)</v-btn>
+          </div>
+        </v-card>
+      </div>
+    </v-expand-transition>
   </v-container>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { CdButton, CdTextInput, CdDropdown } from '@/components/atoms'
 
 interface FormField {
@@ -424,10 +481,33 @@ const answerTypeOptions = [
 let questionIdCounter = 1
 
 // Methods
+const previewVisible = ref(false)
+const previewRef = ref<HTMLElement | null>(null)
+const togglePreview = () => (previewVisible.value = !previewVisible.value)
+
+const enabledFormFields = computed(() => formFields.value.filter((f) => f.enabled))
+
+const previewComponentForField = (field: FormField) => {
+  switch (field.type) {
+    case 'text':
+      return 'v-text-field'
+    case 'email':
+      return 'v-text-field'
+    case 'tel':
+      return 'v-text-field'
+    case 'textarea':
+      return 'v-textarea'
+    case 'file':
+      return 'v-file-input'
+    case 'dropdown':
+      return 'v-select'
+    default:
+      return 'div'
+  }
+}
 const editField = (index: number) => {
   const field = formFields.value[index]
   console.log('Editing field:', field.label)
-  // TODO: Implement field editing dialog for customizable fields
 }
 
 const addCustomQuestion = () => {

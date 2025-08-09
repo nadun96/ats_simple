@@ -4,7 +4,7 @@
     <MobileDrawer v-model="drawer" />
 
     <v-main>
-      <v-container fluid class="full-width-container">
+      <v-container class="page-container">
         <router-view />
       </v-container>
     </v-main>
@@ -20,14 +20,7 @@ const drawer = ref(false)
 </script>
 
 <style scoped>
-.full-width-container {
-  padding: 0 !important;
-  width: 100%;
-  max-width: 100% !important;
-  margin: 0 !important;
-}
-
-v-main {
-  padding: 0 !important;
+.page-container {
+  max-width: 1200px;
 }
 </style>

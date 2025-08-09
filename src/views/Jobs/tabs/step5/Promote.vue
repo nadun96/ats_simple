@@ -152,11 +152,19 @@
       </div>
     </v-card>
   </v-container>
+  <div class="wizard-actions d-flex justify-space-between">
+    <v-btn @click="$emit('prev')" variant="outlined" color="primary">Previous</v-btn>
+    <div class="d-flex ga-2">
+      <v-btn variant="outlined" color="primary" @click="saveDraft">Save as draft</v-btn>
+      <v-btn color="primary" @click="finish">Finish</v-btn>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { CdButton, CdTextInput, CdDropdown } from '@/components/atoms'
+import { CdTextInput, CdDropdown } from '@/components/atoms'
+defineEmits(['next','prev'])
 
 interface PromotionChannel {
   id: string
@@ -289,5 +297,15 @@ const toggleChannel = (channelId: string) => {
   if (channel) {
     console.log(`${channel.name} ${channel.enabled ? 'enabled' : 'disabled'}`)
   }
+}
+
+const saveDraft = () => {
+  promotionSettings.value.publicationStatus = 'draft'
+  console.log('Saved as draft')
+}
+
+const finish = () => {
+  console.log('Finished setup')
+  // Optionally emit next to exit the wizard
 }
 </script>

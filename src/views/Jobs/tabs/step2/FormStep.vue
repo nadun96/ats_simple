@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4 d-flex justify-space-between">
+  <div class="wizard-actions d-flex justify-space-between">
     <v-btn @click="$emit('prev')" variant="outlined" color="primary"
       >Previous</v-btn
     >

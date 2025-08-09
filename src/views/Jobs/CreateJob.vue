@@ -12,7 +12,6 @@ import ApplicationForm from './tabs/step2/ApplicationForm.vue'
 import WorkFlow from './tabs/step3/WorkFlow.vue'
 import JobTeam from './tabs/step4/JobTeam.vue'
 import Promote from './tabs/step5/Promote.vue'
-import FormStep from './tabs/step2/FormStep.vue'
 
 const activeStep = ref(1)
 
@@ -26,7 +25,7 @@ interface JobDescriptionExpose {
 }
 
 const jobDescriptionRef = ref<JobDescriptionExpose | null>(null)
-const formStepRef = ref(null)
+// No special ref for form step for now
 
 const stepData = [
   {
@@ -37,9 +36,8 @@ const stepData = [
   },
   {
     title: 'Form',
-    content: ApplicationForm,
     content: {
-      render: () => h(FormStep, { ref: formStepRef }),
+      render: () => h(ApplicationForm),
     },
   },
   {
@@ -59,15 +57,7 @@ const stepData = [
 ]
 
 const handleNext = () => {
-  if (activeStep.value === 1) {
-    // const isValid = jobDescriptionRef.value?.isValid?.()
-    // if (!isValid) {
-    //   alert('Fill out required fields.')
-    //   return
-    // }
-    // console.log('✅ Data:', jobDescriptionRef.value.getFormData())
-  }
-
+  // Allow free navigation; we'll add validation later
   activeStep.value++
 }
 

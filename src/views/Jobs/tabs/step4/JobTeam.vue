@@ -182,11 +182,16 @@
       </v-card>
     </v-dialog>
   </v-container>
+  <div class="wizard-actions d-flex justify-space-between">
+    <v-btn @click="$emit('prev')" variant="outlined" color="primary">Previous</v-btn>
+    <v-btn @click="$emit('next')" color="primary">Next</v-btn>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { CdButton, CdTextInput, CdDropdown } from '@/components/atoms'
+defineEmits(['next','prev'])
 
 interface TeamMember {
   id: string
