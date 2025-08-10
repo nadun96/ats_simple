@@ -10,6 +10,7 @@ import CdStepper from '@/components/molecules/CdStepper.vue'
 import JobDescription from './tabs/step1/JobDescription.vue'
 import WorkFlow from './tabs/step3/WorkFlow.vue'
 import FormStep from './tabs/step2/FormStep.vue'
+import JobTeamStep from './tabs/step4/JobTeam.vue'
 
 const activeStep = ref(1)
 
@@ -47,7 +48,7 @@ const stepData = [
   {
     title: 'Job Team',
     content: {
-      render: () => h('div', 'Content for Job Team'),
+      render: () => h(JobTeamStep),
     },
   },
   {
