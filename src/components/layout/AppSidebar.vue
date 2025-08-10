@@ -1,44 +1,40 @@
 <template>
-  <v-app>
+  <div class="layout-with-sidebar">
     <MobileDrawer v-if="showDrawer" v-model="drawer" />
 
-    <v-main>
-      <div class="layout-with-sidebar">
-        <aside :class="['sidebar-content', { collapsed: isCollapsed }]">
-          <v-list-item class="d-flex justify-space-between align-center px-1 mb-2">
-            <v-list-item-title v-if="!isCollapsed" class="text-subtitle-1 font-weight-bold">
-              {{ sidebarTitle }}
-            </v-list-item-title>
-            <v-btn icon size="small" @click="toggleCollapse">
-              <v-icon>{{ isCollapsed ? 'mdi-chevron-right' : 'mdi-chevron-left' }}</v-icon>
-            </v-btn>
-          </v-list-item>
+    <aside :class="['sidebar-content', { collapsed: isCollapsed }]">
+      <v-list-item class="d-flex justify-space-between align-center px-1 mb-2">
+        <v-list-item-title v-if="!isCollapsed" class="text-subtitle-1 font-weight-bold">
+          {{ sidebarTitle }}
+        </v-list-item-title>
+        <v-btn icon size="small" @click="toggleCollapse">
+          <v-icon>{{ isCollapsed ? 'mdi-chevron-right' : 'mdi-chevron-left' }}</v-icon>
+        </v-btn>
+      </v-list-item>
 
-          <v-list dense nav>
-            <v-list-item
-              v-for="item in sidebarItems"
-              :key="item.name"
-              :to="item.to"
-              :class="[
-                'rounded-lg',
-                'd-flex align-center',
-                { 'bg-blue-lighten-5': $route.name === item.name },
-              ]"
-            >
-              <v-icon class="mr-3">{{ item.icon }}</v-icon>
-              <span v-if="!isCollapsed">{{ item.label }}</span>
-            </v-list-item>
-          </v-list>
+      <v-list dense nav>
+        <v-list-item
+          v-for="item in sidebarItems"
+          :key="item.name"
+          :to="item.to"
+          :class="[
+            'rounded-lg',
+            'd-flex align-center',
+            { 'bg-blue-lighten-5': $route.name === item.name },
+          ]"
+        >
+          <v-icon class="mr-3">{{ item.icon }}</v-icon>
+          <span v-if="!isCollapsed">{{ item.label }}</span>
+        </v-list-item>
+      </v-list>
 
-          <slot name="sidebar-extra" :is-collapsed="isCollapsed" />
-        </aside>
+      <slot name="sidebar-extra" :is-collapsed="isCollapsed" />
+    </aside>
 
-        <section class="main-content">
-          <slot />
-        </section>
-      </div>
-    </v-main>
-  </v-app>
+    <section class="main-content">
+      <slot />
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">

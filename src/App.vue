@@ -1,7 +1,7 @@
 <template>
-  <DefaultLayout />
+  <router-view />
 </template>
 
 <script setup lang="ts">
-import DefaultLayout from './components/layout/DefaultLayout.vue'
+// Router handles layout rendering
 </script>

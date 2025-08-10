@@ -1,25 +1,28 @@
 {
   "quickActions": [
     {
-      "title": "New Recruitment",
+      "title": "Create Job",
       "description": "Start a new recruitment process and post job openings.",
       "icon": "mdi-account-plus",
       "color": "primary",
-      "buttonText": "Create Job"
+      "buttonText": "Create Job",
+      "route": "/job"
     },
     {
       "title": "Browse CVs",
       "description": "Search and review candidate profiles in your CV library.",
       "icon": "mdi-file-document-multiple",
       "color": "success",
-      "buttonText": "Browse CVs"
+      "buttonText": "Browse CVs",
+      "route": "/candidates"
     },
     {
       "title": "View Analytics",
       "description": "Track your recruitment performance and metrics.",
       "icon": "mdi-chart-line",
       "color": "info",
-      "buttonText": "View Reports"
+      "buttonText": "View Analytics",
+      "route": "/analysis"
     }
   ],
   "stats": [
@@ -27,5 +30,336 @@
     { "value": "156", "label": "Candidates" },
     { "value": "12", "label": "Interviews" },
     { "value": "8", "label": "Offers" }
+  ],
+  "jobs": [
+                    {
+                  "id": 1,
+                  "title": "JAVA Engineer",
+                  "location": "Freelance - Paris",
+                  "date": "Jul 2, 2025",
+                  "status": "Public",
+                  "hired": true,
+                  "type": "Freelance",
+                  "applications": 12,
+                  "createdDate": "2025-01-10",
+                  "applicationsList": [
+                    {
+                      "id": 1,
+                      "name": "Jean Dupont",
+                      "email": "jean.dupont@email.com",
+                      "phone": "+33 6 12 34 56 78",
+                      "status": "New",
+                      "appliedDate": "2025-01-15T10:30:00Z",
+                      "source": "Career Site",
+                      "avatar": null,
+                      "resume": "resume_jean_dupont.pdf",
+                      "coverLetter": "cover_jean_dupont.pdf"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Marie Martin",
+                      "email": "marie.martin@email.com",
+                      "phone": "+33 6 98 76 54 32",
+                      "status": "CV Selected",
+                      "appliedDate": "2025-01-14T14:20:00Z",
+                      "source": "LinkedIn",
+                      "avatar": null,
+                      "resume": "resume_marie_martin.pdf",
+                      "coverLetter": null
+                    },
+                    {
+                      "id": 3,
+                      "name": "Pierre Dubois",
+                      "email": "pierre.dubois@email.com",
+                      "phone": "+33 6 55 44 33 22",
+                      "status": "Phone Evaluated",
+                      "appliedDate": "2025-01-13T09:15:00Z",
+                      "source": "Indeed",
+                      "avatar": null,
+                      "resume": "resume_pierre_dubois.pdf",
+                      "coverLetter": "cover_pierre_dubois.pdf"
+                    }
+                  ],
+      "company": {
+        "name": "TechCorp France",
+        "url": "https://techcorp-fr.com",
+        "description": "Leading technology company specializing in enterprise software solutions.",
+        "logo": null,
+        "banner": null
+      },
+      "jobDescription": {
+        "title": "JAVA Engineer",
+        "summary": "We are looking for a skilled Java Engineer to join our development team.",
+        "requirements": [
+          "5+ years of experience in Java development",
+          "Strong knowledge of Spring Framework",
+          "Experience with microservices architecture",
+          "Knowledge of database design and SQL"
+        ],
+        "responsibilities": [
+          "Develop and maintain Java applications",
+          "Collaborate with cross-functional teams",
+          "Write clean, maintainable code",
+          "Participate in code reviews"
+        ],
+        "benefits": [
+          "Competitive salary",
+          "Remote work options",
+          "Professional development opportunities",
+          "Health insurance"
+        ]
+      },
+      "jobSettings": {
+        "contractType": "Freelance",
+        "experienceLevel": "Mid-Senior",
+        "salary": {
+          "min": 60000,
+          "max": 80000,
+          "currency": "EUR"
+        },
+        "location": {
+          "city": "Paris",
+          "country": "France",
+          "remote": true,
+          "hybrid": false
+        },
+        "duration": "6 months",
+        "startDate": "2025-08-01"
+      },
+      "applicationForm": {
+        "fields": [
+          "Full Name",
+          "Email",
+          "Phone",
+          "Resume/CV",
+          "Cover Letter",
+          "Portfolio Link"
+        ],
+        "requiredFields": [
+          "Full Name",
+          "Email",
+          "Resume/CV"
+        ]
+      },
+      "workflow": {
+        "stages": [
+          {
+            "id": 1,
+            "name": "New",
+            "description": "Application received",
+            "color": "#2196F3"
+          },
+          {
+            "id": 2,
+            "name": "CV Selected",
+            "description": "Resume reviewed and selected",
+            "color": "#FF9800"
+          },
+          {
+            "id": 3,
+            "name": "Phone Evaluated",
+            "description": "Initial phone screening completed",
+            "color": "#9C27B0"
+          },
+          {
+            "id": 4,
+            "name": "Interview Passed",
+            "description": "Technical interview successful",
+            "color": "#4CAF50"
+          },
+          {
+            "id": 5,
+            "name": "Offer Made",
+            "description": "Job offer extended",
+            "color": "#795548"
+          },
+          {
+            "id": 6,
+            "name": "Hired",
+            "description": "Candidate accepted offer",
+            "color": "#607D8B"
+          }
+        ]
+      },
+      "team": {
+        "hiringManager": "Jean Dupont",
+        "recruiter": "Marie Martin",
+        "interviewers": [
+          "Pierre Dubois",
+          "Sophie Bernard"
+        ]
+      },
+      "promotion": {
+        "careerSite": true,
+        "jobBoards": [
+          "LinkedIn",
+          "Indeed",
+          "Apec"
+        ],
+        "socialMedia": [
+          "LinkedIn Company Page",
+          "Twitter"
+        ]
+      }
+    },
+                    {
+                  "id": 2,
+                  "title": "Python Engineer",
+                  "location": "Freelance - Colombo",
+                  "date": "Jun 29, 2025",
+                  "status": "Public",
+                  "hired": true,
+                  "type": "Freelance",
+                  "applications": 8,
+                  "createdDate": "2025-01-08",
+                  "applicationsList": [
+                    {
+                      "id": 4,
+                      "name": "Raj Patel",
+                      "email": "raj.patel@email.com",
+                      "phone": "+94 71 234 5678",
+                      "status": "New",
+                      "appliedDate": "2025-01-12T11:45:00Z",
+                      "source": "Career Site",
+                      "avatar": null,
+                      "resume": "resume_raj_patel.pdf",
+                      "coverLetter": "cover_raj_patel.pdf"
+                    },
+                    {
+                      "id": 5,
+                      "name": "Priya Singh",
+                      "email": "priya.singh@email.com",
+                      "phone": "+94 77 876 5432",
+                      "status": "CV Selected",
+                      "appliedDate": "2025-01-11T16:30:00Z",
+                      "source": "LinkedIn",
+                      "avatar": null,
+                      "resume": "resume_priya_singh.pdf",
+                      "coverLetter": null
+                    }
+                  ],
+      "company": {
+        "name": "DataSoft Solutions",
+        "url": "https://datasoft-sl.com",
+        "description": "Innovative software company focused on data analytics and machine learning solutions.",
+        "logo": null,
+        "banner": null
+      },
+      "jobDescription": {
+        "title": "Python Engineer",
+        "summary": "Join our team to build scalable Python applications and data processing pipelines.",
+        "requirements": [
+          "3+ years of Python development experience",
+          "Knowledge of Django or Flask frameworks",
+          "Experience with data processing libraries (Pandas, NumPy)",
+          "Understanding of RESTful APIs"
+        ],
+        "responsibilities": [
+          "Develop Python web applications",
+          "Build data processing pipelines",
+          "Optimize application performance",
+          "Write unit tests and documentation"
+        ],
+        "benefits": [
+          "Flexible working hours",
+          "Learning and development budget",
+          "Modern tech stack",
+          "International team"
+        ]
+      },
+      "jobSettings": {
+        "contractType": "Freelance",
+        "experienceLevel": "Mid-Level",
+        "salary": {
+          "min": 40000,
+          "max": 60000,
+          "currency": "USD"
+        },
+        "location": {
+          "city": "Colombo",
+          "country": "Sri Lanka",
+          "remote": true,
+          "hybrid": false
+        },
+        "duration": "12 months",
+        "startDate": "2025-07-15"
+      },
+      "applicationForm": {
+        "fields": [
+          "Full Name",
+          "Email",
+          "Phone",
+          "Resume/CV",
+          "GitHub Profile",
+          "Cover Letter"
+        ],
+        "requiredFields": [
+          "Full Name",
+          "Email",
+          "Resume/CV",
+          "GitHub Profile"
+        ]
+      },
+      "workflow": {
+        "stages": [
+          {
+            "id": 1,
+            "name": "New",
+            "description": "Application received",
+            "color": "#2196F3"
+          },
+          {
+            "id": 2,
+            "name": "CV Selected",
+            "description": "Resume reviewed and selected",
+            "color": "#FF9800"
+          },
+          {
+            "id": 3,
+            "name": "Phone Evaluated",
+            "description": "Initial phone screening completed",
+            "color": "#9C27B0"
+          },
+          {
+            "id": 4,
+            "name": "Interview Passed",
+            "description": "Technical interview successful",
+            "color": "#4CAF50"
+          },
+          {
+            "id": 5,
+            "name": "Offer Made",
+            "description": "Job offer extended",
+            "color": "#795548"
+          },
+          {
+            "id": 6,
+            "name": "Hired",
+            "description": "Candidate accepted offer",
+            "color": "#607D8B"
+          }
+        ]
+      },
+      "team": {
+        "hiringManager": "Raj Patel",
+        "recruiter": "Priya Singh",
+        "interviewers": [
+          "Kumar Perera",
+          "Anjali Fernando"
+        ]
+      },
+      "promotion": {
+        "careerSite": true,
+        "jobBoards": [
+          "LinkedIn",
+          "Indeed",
+          "Stack Overflow Jobs"
+        ],
+        "socialMedia": [
+          "LinkedIn Company Page",
+          "Facebook"
+        ]
+      }
+    }
   ]
 }

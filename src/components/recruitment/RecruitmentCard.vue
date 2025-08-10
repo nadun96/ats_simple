@@ -145,19 +145,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-defineProps<{
-  job: {
-    id: number
-    title: string
-    location: string
-    date: string
-    status: string
-    hired: boolean
-    type: string
-  }
+import type { Job } from '@/services/jobService'
+
+const props = defineProps<{
+  job: Job
 }>()
 
+const router = useRouter()
 const isFavorite = ref(false)
 
 const updateStatus = (status: string) => {
@@ -169,16 +165,37 @@ const toggleFavorite = () => {
 }
 
 const handleAction = (action: string) => {
-  console.log(`${action} clicked`)
+  switch (action) {
+    case 'edit':
+      router.push(`/job/${props.job.id}/edit`)
+      break
+    case 'view':
+      router.push(`/recruitment/${props.job.id}`)
+      break
+    case 'duplicate':
+      console.log('Duplicate job:', props.job.id)
+      break
+    case 'share':
+      console.log('Share job:', props.job.id)
+      break
+    case 'download':
+      console.log('Download job:', props.job.id)
+      break
+    case 'invite':
+      console.log('Invite collaborators for job:', props.job.id)
+      break
+    default:
+      console.log(`${action} clicked for job:`, props.job.id)
+  }
 }
 
 const progressLabels = [
-  'Nouveau',
-  'CV sélectionné',
-  'Evalué par téléphone',
-  'Entretien passé',
-  'Offre faite',
-  'Embauché',
+        'New',
+      'CV Selected',
+      'Phone Evaluated',
+      'Interview Passed',
+      'Offer Made',
+      'Hired',
 ]
 
 const onLabelClick = (label: string) => {

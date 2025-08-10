@@ -38,7 +38,13 @@
                       {{ action.description }}
                     </v-card-text>
                     <v-card-actions>
-                      <v-btn :color="action.color" variant="text" block class="py-2">
+                      <v-btn
+                        :color="action.color"
+                        variant="text"
+                        block
+                        class="py-2"
+                        @click="handleQuickAction(action)"
+                      >
                         {{ action.buttonText }}
                       </v-btn>
                     </v-card-actions>
@@ -80,10 +86,27 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import mockData from '@/assets/mock.json'
 
-const quickActions = ref(mockData.quickActions)
+interface QuickAction {
+  title: string
+  description: string
+  icon: string
+  color: string
+  buttonText: string
+  route: string
+}
+
+const quickActions = ref<QuickAction[]>(mockData.quickActions)
 const stats = ref(mockData.stats)
+const router = useRouter()
+
+const handleQuickAction = (action: QuickAction) => {
+  if (action.route) {
+    router.push(action.route)
+  }
+}
 </script>
 
 <style scoped>

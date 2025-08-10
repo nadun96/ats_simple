@@ -12,21 +12,30 @@
 
     <!-- Main Content -->
     <v-main>
-      <JobDetailHeader v-if="selectedJob" :job="selectedJob" />
-
-      <!-- Tabs -->
-      <JobTabs :selectedTab="selectedTab" @update-tab="selectedTab = $event" />
-
-      <!-- Dynamic Tab Content -->
-      <div class="px-4">
-        <component :is="currentTabComponent" />
+      <div v-if="!selectedJob" class="d-flex justify-center align-center" style="height: 400px;">
+        <v-alert type="info" title="No job selected">
+          Please select a job from the sidebar or the job was not found.
+        </v-alert>
       </div>
+
+      <template v-else>
+        <JobDetailHeader :job="selectedJob" />
+
+        <!-- Tabs -->
+        <JobTabs :selectedTab="selectedTab" @update-tab="selectedTab = $event" />
+
+        <!-- Dynamic Tab Content -->
+        <div class="px-4">
+          <component :is="currentTabComponent" />
+        </div>
+      </template>
     </v-main>
   </v-container>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, h } from 'vue'
+import { jobService, type Job } from '@/services/jobService'
 
 // Components
 import JobDetailSidebar from '@/components/job-detail/JobDetailSidebar.vue'
@@ -39,35 +48,69 @@ import ActivitiesTab from '@/components/job-detail/ActivitiesTab.vue'
 import PromoteTab from '@/components/job-detail/PromoteTab.vue'
 import ReportingTab from '@/components/job-detail/ReportingTab.vue'
 
-// State
-const jobs = ref([
-  { id: 1, title: 'JAVA Engineer', type: 'Freelance', location: 'Paris' },
-  { id: 2, title: 'Python Engineer', type: 'Freelance', location: 'Colombo' },
-  { id: 3, title: 'Marketing Manager', type: 'CDD (6 m)', location: 'Paris' },
-])
+// Props and Route
+interface Props {
+  id: string
+}
 
-const selectedJobId = ref(1)
+const props = defineProps<Props>()
+
+// State
+const jobs = ref<Job[]>([])
+const selectedJobId = ref<number>(1)
 const sidebarCollapsed = ref(false)
 const selectedTab = ref('applications')
 
+// Load jobs and set selected job based on props
+onMounted(() => {
+  console.log('JobDetail mounted, props:', props)
+  jobs.value = jobService.getAllJobs()
+  console.log('Loaded jobs:', jobs.value)
+
+  // Set selected job based on props
+  const jobId = parseInt(props.id)
+  console.log('Props job ID:', jobId)
+  if (!isNaN(jobId) && jobs.value.some(job => job.id === jobId)) {
+    selectedJobId.value = jobId
+    console.log('Set selected job ID to:', selectedJobId.value)
+  } else {
+    console.log('Invalid job ID or job not found')
+  }
+})
+
 // Computed job
-const selectedJob = computed(() =>
-  jobs.value.find(job => job.id === selectedJobId.value)
-)
+const selectedJob = computed(() => {
+  console.log('Computing selectedJob, selectedJobId:', selectedJobId.value, 'jobs:', jobs.value)
+  const job = jobs.value.find(job => job.id === selectedJobId.value)
+  console.log('Found job:', job)
+  if (!job) return null
+
+  // Map the job data to be compatible with JobDetail components
+  const mappedJob = {
+    ...job,
+    company: job.company.name, // Convert company object to string for header
+    type: job.jobSettings.contractType, // Use contract type from settings
+    location: `${job.jobSettings.location.city}, ${job.jobSettings.location.country}` // Use location from settings
+  }
+  console.log('Mapped job:', mappedJob)
+  return mappedJob
+})
 
 // Component mapping based on selectedTab
 const currentTabComponent = computed(() => {
+  // Get the original job data from the jobs array
+  const originalJob = jobs.value.find(job => job.id === selectedJobId.value)
   switch (selectedTab.value) {
     case 'applications':
-      return ApplicationsTab
+      return h(ApplicationsTab, { jobData: originalJob })
     case 'activities':
-      return ActivitiesTab
+      return h(ActivitiesTab, { jobData: originalJob })
     case 'promote':
-      return PromoteTab
+      return h(PromoteTab, { jobData: originalJob })
     case 'reporting':
-      return ReportingTab
+      return h(ReportingTab, { jobData: originalJob })
     default:
-      return ApplicationsTab
+      return h(ApplicationsTab, { jobData: originalJob })
   }
 })
 </script>

@@ -248,7 +248,7 @@ let idCounter = 1
 let actionIdCounter = 1
 
 const addActionDialogVisible = ref(false)
-const addActionTargetStepId = ref<number | null>(null)
+const addActionTargetStepId = ref<string | null>(null)
 const emailConfigDialogVisible = ref(false)
 const smsConfigDialogVisible = ref(false)
 const videoConfigDialogVisible = ref(false)
@@ -357,13 +357,13 @@ const actionOptions: Record<'contact' | 'quality', { type: WorkflowActionType; l
 }
 
 const openAddActionDialog = (stepId: number) => {
-  addActionTargetStepId.value = stepId
+  addActionTargetStepId.value = stepId.toString()
   addActionDialogVisible.value = true
 }
 
 const selectAction = (option: { type: WorkflowActionType; label: string; icon: string }) => {
   if (addActionTargetStepId.value == null) return
-  const item = workflowItems.value.find((i) => i.id === addActionTargetStepId.value)
+  const item = workflowItems.value.find((i) => i.id.toString() === addActionTargetStepId.value)
   if (!item) return
   const newAction: WorkflowAction = {
     id: actionIdCounter++,
@@ -391,7 +391,7 @@ const selectAction = (option: { type: WorkflowActionType; label: string; icon: s
 }
 
 // Email config form state
-const stepOptions = computed(() => workflowItems.value.map((s) => ({ value: s.id, displayValue: s.title })))
+const stepOptions = computed(() => workflowItems.value.map((s) => ({ value: s.id.toString(), displayValue: s.title })))
 const senderOptions = [
   { value: 'me', displayValue: 'Me' },
   { value: 'hr', displayValue: 'HR Team' },
@@ -402,7 +402,7 @@ const delayOptions = [
   { value: '1d', displayValue: '1 day' },
 ]
 
-const emailForm = reactive({ stepId: 0 as number, senderId: 'me' as string, subject: '', body: '', delay: '10m' as string })
+const emailForm = reactive({ stepId: '0' as string, senderId: 'me' as string, subject: '', body: '', delay: '10m' as string })
 const emailAttachments = ref<File[] | null>(null)
 
 const saveEmailConfig = () => {
@@ -411,14 +411,14 @@ const saveEmailConfig = () => {
 }
 
 // SMS config
-const smsForm = reactive({ stepId: 0 as number, senderId: 'me' as string, subject: '', body: '', delay: '10m' as string })
+const smsForm = reactive({ stepId: '0' as string, senderId: 'me' as string, subject: '', body: '', delay: '10m' as string })
 const smsAttachments = ref<File[] | null>(null)
 const saveSmsConfig = () => {
   smsConfigDialogVisible.value = false
 }
 
 // Video config + recording
-const videoForm = reactive({ stepId: 0 as number, title: '', delay: '10m' as string })
+const videoForm = reactive({ stepId: '0' as string, title: '', delay: '10m' as string })
 const isRecording = ref(false)
 let mediaStream: MediaStream | null = null
 let mediaRecorder: MediaRecorder | null = null
@@ -470,7 +470,7 @@ const saveVideoConfig = () => {
 // Request Evaluation dialog
 const evaluationConfigDialogVisible = ref(false)
 const evaluationForm = reactive({
-  stepId: 0 as number,
+      stepId: '0' as string,
   interviewPanel: [] as string[],
   meetingLink: '',
   candidateEmailSubject: '',
@@ -480,7 +480,7 @@ const evaluationForm = reactive({
 })
 
 const saveEvaluationConfig = () => {
-  evaluationForm.interviewPanel = panelString
+  evaluationForm.interviewPanel = panelString.value
     .split(',')
     .map((s) => s.trim())
     .filter((s) => !!s)

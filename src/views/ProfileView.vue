@@ -1,63 +1,115 @@
 <template>
-  <AppSidebar :showSidebar="true" sidebarTitle="Profile" :sidebarItems="sidebarItems">
-    <v-container fluid class="pa-4 pa-md-6">
-      <div class="profile-header d-flex align-center mb-4">
-        <v-icon size="28" class="mr-2" color="primary">mdi-account-circle</v-icon>
-        <h2 class="mb-0">Profile</h2>
-      </div>
+  <div class="profile-container">
+    <div class="profile-header d-flex align-center mb-4">
+      <v-icon size="28" class="mr-2" color="primary">mdi-account-circle</v-icon>
+      <h2 class="mb-0">Profile</h2>
+    </div>
 
-      <v-tabs
-        v-model="tab"
-        color="primary"
-        class="mb-6 profile-tabs rounded-lg small-tabs"
-        bg-color="white"
-        elevation="2"
-        density="compact"
+    <v-tabs
+      v-model="activeTab"
+      color="primary"
+      class="mb-6 profile-tabs rounded-lg small-tabs"
+      bg-color="white"
+      elevation="2"
+      density="compact"
+    >
+      <v-tab
+        v-for="item in tabs"
+        :key="item.name"
+        :value="item.name"
+        @click="navigateToTab(item.name)"
+        class="text-none"
       >
-        <v-tab v-for="item in tabs" :key="item.name" :to="{ name: item.name }" class="text-none">
-          {{ item.label }}
-        </v-tab>
-      </v-tabs>
+        {{ item.label }}
+      </v-tab>
+    </v-tabs>
 
-      <v-row>
-        <v-col cols="12" md="10" offset-md="1">
-          <router-view />
-        </v-col>
-      </v-row>
-    </v-container>
-  </AppSidebar>
+    <v-row>
+      <v-col cols="12" md="10" offset-md="1">
+        <router-view />
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import AppSidebar from '@/components/layout/AppSidebar.vue'
+import { ref, watch, onMounted, onBeforeMount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
+const router = useRouter()
+
+console.log('ProfileView script setup executed')
+
+onBeforeMount(() => {
+  console.log('ProfileView onBeforeMount')
+})
+
+onMounted(() => {
+  console.log('ProfileView onMounted, route path:', route.path)
+  console.log('ProfileView onMounted, route name:', route.name)
+  console.log('ProfileView onMounted, route params:', route.params)
+  console.log('ProfileView onMounted, route query:', route.query)
+
+  // Set active tab based on current route
+  const currentPath = route.path
+  if (currentPath.includes('/profile/')) {
+    const tabName = currentPath.split('/profile/')[1]
+    if (tabName && tabs.some(tab => tab.name === tabName)) {
+      activeTab.value = tabName
+      console.log('Active tab set to:', tabName)
+    }
+  }
+})
 
 const tabs = [
   { name: 'information', label: 'My Information' },
   { name: 'signature', label: 'My Signature' },
   { name: 'security', label: 'Security' },
+  { name: 'notifications', label: 'Notifications' },
+  { name: 'calendar', label: 'Calendar' },
 ]
 
-const sidebarItems = [
-  { name: 'information', label: 'Profile', icon: 'mdi-account', to: '/profile/information' },
-  { name: 'notifications', label: 'Notifications', icon: 'mdi-bell', to: '/notifications' },
-  { name: 'calendar', label: 'Calendar', icon: 'mdi-calendar', to: '/calendar' },
-]
+const activeTab = ref('information')
 
-const tab = ref(route.name)
+const navigateToTab = (tabName: string) => {
+  console.log('Navigating to tab:', tabName)
+  const targetPath = `/profile/${tabName}`
+  console.log('Target path:', targetPath)
+  router.push(targetPath).then(() => {
+    console.log('Tab navigation successful')
+  }).catch((error) => {
+    console.error('Tab navigation failed:', error)
+  })
+}
+
+watch(
+  () => route.path,
+  (newPath) => {
+    console.log('Route path changed to:', newPath)
+    if (newPath.includes('/profile/')) {
+      const tabName = newPath.split('/profile/')[1]
+      if (tabName && tabs.some(tab => tab.name === tabName)) {
+        activeTab.value = tabName
+        console.log('Active tab updated to:', tabName)
+      }
+    }
+  },
+)
 
 watch(
   () => route.name,
-  (newVal) => {
-    tab.value = newVal
+  (newName) => {
+    console.log('Route name changed to:', newName)
   },
 )
 </script>
 
 <style scoped>
+.profile-container {
+  padding: 24px;
+}
+
 .profile-header {
   font-weight: 600;
   font-size: 1.5rem;

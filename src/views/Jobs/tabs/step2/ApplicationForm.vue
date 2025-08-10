@@ -334,12 +334,20 @@
         </v-card>
       </div>
     </v-expand-transition>
+
+    <!-- Navigation Buttons -->
+    <div class="wizard-actions d-flex justify-space-between mt-6">
+      <v-btn @click="$emit('prev')" variant="outlined" color="primary">Previous</v-btn>
+      <v-btn @click="$emit('next')" color="primary">Next</v-btn>
+    </div>
   </v-container>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { CdButton, CdTextInput, CdDropdown } from '@/components/atoms'
+
+defineEmits(['next', 'prev'])
 
 interface FormField {
   id: string

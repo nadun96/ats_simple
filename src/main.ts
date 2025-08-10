@@ -12,3 +12,6 @@ app.use(router)
 app.use(vuetify)
 
 app.mount('#app')
+
+// Export the app instance for potential external use
+export default app

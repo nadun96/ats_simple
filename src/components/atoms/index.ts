@@ -1,6 +1,6 @@
-import CdTextInput from './CdTextInput.vue'
-import CdButton from './CdButton.vue'
-import CdLabel from './CdLabel.vue'
-import CdDropdown from './CdDropdown.vue'
-
-export {  CdTextInput, CdButton, CdLabel, CdDropdown }
+export { default as CdButton } from './CdButton.vue'
+export { default as CdDropdown } from './CdDropdown.vue'
+export { default as CdDropzone } from './CdDropzone.vue'
+export { default as CdLabel } from './CdLabel.vue'
+export { default as CdTextInput } from './CdTextInput.vue'
+export { default as BaseInput } from '../BaseInput.vue'

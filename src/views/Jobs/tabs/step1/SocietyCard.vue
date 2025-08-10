@@ -71,7 +71,13 @@ import CdButton from '@/components/atoms/CdButton.vue'
 import CdDropzone from '@/components/atoms/CdDropzone.vue'
 import { CdRichTextEditor } from '@/components/molecules'
 
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted, watch } from 'vue'
+import type { Job } from '@/services/jobService'
+
+const props = defineProps<{
+  jobData?: Job
+  isEditing?: boolean
+}>()
 
 const formRef = ref()
 
@@ -87,10 +93,26 @@ const validationRules = {
   ],
   url: [
     (v: string) => !!v || 'URL is required',
-    (v: string) => /^(https?:\/\/)?([\w\-])+(\.[\w\-]+)+[/#?]?.*$/.test(v) || 'Enter a valid URL',
+    (v: string) => /^(https?:\/\/)?([\w-])+(\.[\w-]+)+[/#?]?.*$/.test(v) || 'Enter a valid URL',
   ],
   // companyDescription: [(v: string) => !!v || 'Description is required'],
 }
+
+// Load job data when editing
+onMounted(() => {
+  if (props.isEditing && props.jobData) {
+    formData.companyName = props.jobData.company.name
+    formData.url = props.jobData.company.url
+  }
+})
+
+// Watch for changes in job data
+watch(() => props.jobData, (newJobData) => {
+  if (props.isEditing && newJobData) {
+    formData.companyName = newJobData.company.name
+    formData.url = newJobData.company.url
+  }
+}, { immediate: true })
 
 const isValid = async () => {
   const result = await formRef.value?.validate?.()

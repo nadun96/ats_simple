@@ -1,21 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import DefaultLayout from '@/components/layout/DefaultLayout.vue'
 
 import Recruitment from '@/views/RecruitmentView.vue'
 import SampleView from '@/views/SampleView.vue'
 import JobDetail from '@/views/JobDetail.vue'
 import CreateJob from '@/views/Jobs/CreateJob.vue'
+import EditJob from '@/views/Jobs/EditJob.vue'
 import JobAdPreview from '@/views/Jobs/JobAdPreview.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import MyInformation from '@/components/profile/MyInformation.vue'
 import MySignature from '@/components/profile/MySignature.vue'
 import MySecurity from '@/components/profile/MySecurity.vue'
+import MyNotifications from '@/components/profile/MyNotifications.vue'
+import MyCalendar from '@/components/profile/MyCalendar.vue'
+import CandidatesView from '@/views/CandidatesView.vue'
+import CandidateDetail from '@/views/CandidateDetail.vue'
+import CreateCandidateView from '@/views/CreateCandidateView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      component: DefaultLayout,
       children: [
         {
           path: '',
@@ -33,6 +41,12 @@ const router = createRouter({
           component: CreateJob,
         },
         {
+          path: 'job/:id/edit',
+          name: 'edit-job',
+          component: EditJob,
+          props: true,
+        },
+        {
           path: 'job/preview',
           name: 'job-ad-preview',
           component: JobAdPreview,
@@ -41,6 +55,65 @@ const router = createRouter({
           path: 'sample',
           name: 'sample',
           component: SampleView,
+        },
+
+
+        {
+          path: 'analysis',
+          name: 'analysis',
+          component: () => import('@/views/AnalysisView.vue'),
+        },
+
+        // 🔹 Candidate routes
+        {
+          path: 'candidates',
+          name: 'candidates',
+          component: CandidatesView,
+        },
+        {
+          path: 'candidates/create',
+          name: 'create-candidate',
+          component: CreateCandidateView,
+        },
+        {
+          path: 'candidates/:id',
+          name: 'candidate-detail',
+          component: CandidateDetail,
+          props: true,
+        },
+
+        // 🔹 Profile routes - moved inside DefaultLayout
+        {
+          path: 'profile',
+          component: ProfileView,
+          children: [
+            { path: '', redirect: 'information' },
+            {
+              path: 'information',
+              name: 'information',
+              component: MyInformation,
+            },
+            {
+              path: 'signature',
+              name: 'signature',
+              component: MySignature,
+            },
+            {
+              path: 'security',
+              name: 'security',
+              component: MySecurity,
+            },
+            {
+              path: 'notifications',
+              name: 'notifications',
+              component: MyNotifications,
+            },
+            {
+              path: 'calendar',
+              name: 'calendar',
+              component: MyCalendar,
+            },
+          ],
         },
       ],
     },
@@ -52,30 +125,17 @@ const router = createRouter({
       component: JobDetail, // no DefaultLayout — clean layout
       props: true, // allows passing :id as prop
     },
-
-    {
-      path: '/profile',
-      component: ProfileView,
-      children: [
-        { path: '', redirect: 'information' },
-        {
-          path: 'information',
-          name: 'information',
-          component: MyInformation,
-        },
-        {
-          path: 'signature',
-          name: 'signature',
-          component: MySignature,
-        },
-        {
-          path: 'security',
-          name: 'security',
-          component: MySecurity,
-        },
-      ],
-    },
   ],
+})
+
+// Add navigation guards for debugging
+router.beforeEach((to, from, next) => {
+  console.log('Router navigation:', { from: from.path, to: to.path, toName: to.name })
+  next()
+})
+
+router.afterEach((to, from) => {
+  console.log('Router navigation completed:', { from: from.path, to: to.path, toName: to.name })
 })
 
 export default router

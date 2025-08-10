@@ -16,13 +16,19 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "ActivityCommentItem",
-  props: {
-    comment: Object,
-  },
-};
+<script setup lang="ts">
+interface Comment {
+  user: string
+  action: string
+  date: string
+  attachments?: string[]
+}
+
+interface Props {
+  comment: Comment
+}
+
+defineProps<Props>()
 </script>
 
 <style scoped>

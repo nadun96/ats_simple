@@ -164,6 +164,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { CdTextInput, CdDropdown } from '@/components/atoms'
+
+// Component name for linting
+defineOptions({
+  name: 'JobPromote'
+})
+
 defineEmits(['next','prev'])
 
 interface PromotionChannel {

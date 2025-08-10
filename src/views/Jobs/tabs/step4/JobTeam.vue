@@ -210,7 +210,8 @@ const newMember = ref({
   permission: 'read'
 })
 
-const editingMember = ref({
+const editingMember = ref<TeamMember>({
+  id: '',
   email: '',
   role: '',
   permission: ''
