@@ -24,14 +24,15 @@ export { default as PromoteTab } from './job-detail/PromoteTab.vue'
 export { default as ReportingTab } from './job-detail/ReportingTab.vue'
 
 // Layout Components
-export { default as AppHeader } from './layout/AppHeader.vue'
-export { default as AppSidebar } from './layout/AppSidebar.vue'
-export { default as DefaultLayout } from './layout/DefaultLayout.vue'
+export * from './layout'
 
 // Profile Components
 export { default as MyInformation } from './profile/MyInformation.vue'
 export { default as MySecurity } from './profile/MySecurity.vue'
 export { default as MySignature } from './profile/MySignature.vue'
+
+// Public Components
+export * from './public'
 
 // Recruitment Components
 export { default as NewViewDialog } from './recruitment/NewViewDialog.vue'

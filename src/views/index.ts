@@ -3,6 +3,13 @@ export { default as HomeView } from './HomeView.vue'
 export { default as AnalysisView } from './AnalysisView.vue'
 export { default as SampleView } from './SampleView.vue'
 
+// Auth Views
+export { default as LoginView } from './auth/LoginView.vue'
+export { default as SignupView } from './auth/SignupView.vue'
+
+// Public Views
+export { default as PublicJobsView } from './public/PublicJobsView.vue'
+
 // Candidate Views
 export { default as CandidatesView } from './CandidatesView.vue'
 export { default as CreateCandidateView } from './CreateCandidateView.vue'

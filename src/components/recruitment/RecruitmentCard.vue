@@ -43,7 +43,12 @@
           >
             {{ job.title }}
           </router-link>
-          <div class="text-caption text-grey-darken-1">{{ job.location }}</div>
+          <div class="text-caption text-grey-darken-1">
+            {{ job.jobSettings.contractType }} - {{ job.jobSettings.location.city }}, {{ job.jobSettings.location.country }}
+          </div>
+          <div class="text-caption text-grey-darken-2">
+            {{ job.company.name }} • {{ job.jobSettings.experienceLevel }}
+          </div>
         </div>
       </v-col>
 
@@ -99,8 +104,8 @@
     <!-- Progress Labels Row -->
     <v-row class="py-2 flex-nowrap overflow-x-auto no-gutters progress-labels">
       <v-col
-        v-for="(label, index) in progressLabels"
-        :key="index"
+        v-for="stage in job.workflow.stages"
+        :key="stage.id"
         cols="auto"
         class="d-flex justify-center"
       >
@@ -108,10 +113,10 @@
           size="small"
           variant="text"
           class="text-capitalize px-2"
-          @click="onLabelClick(label)"
+          @click="onStageClick(stage)"
         >
           <div class="text-subtitle-2 text-grey-darken-2">-</div>
-          <div class="text-caption">{{ label }}</div>
+          <div class="text-caption">{{ stage.name }}</div>
         </v-btn>
       </v-col>
     </v-row>
@@ -129,12 +134,12 @@
         <v-btn icon size="small" class="mr-1">
           <v-icon>mdi-message-outline</v-icon>
         </v-btn>
-        0
+        {{ job.applications }}
 
         <v-btn icon size="small" class="ml-4 mr-1">
           <v-icon>mdi-account-group-outline</v-icon>
         </v-btn>
-        0
+        {{ job.applications }}
 
         <v-icon class="ml-4 mr-1" size="18">mdi-clock-outline</v-icon>
         {{ job.date }}
@@ -189,17 +194,8 @@ const handleAction = (action: string) => {
   }
 }
 
-const progressLabels = [
-        'New',
-      'CV Selected',
-      'Phone Evaluated',
-      'Interview Passed',
-      'Offer Made',
-      'Hired',
-]
-
-const onLabelClick = (label: string) => {
-  console.log('Clicked label:', label)
+const onStageClick = (stage: { id: number; name: string; description: string; color: string }) => {
+  console.log('Clicked stage:', stage.name, stage.description)
 }
 </script>
 

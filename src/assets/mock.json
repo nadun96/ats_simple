@@ -32,54 +32,52 @@
     { "value": "8", "label": "Offers" }
   ],
   "jobs": [
-                    {
-                  "id": 1,
-                  "title": "JAVA Engineer",
-                  "location": "Freelance - Paris",
-                  "date": "Jul 2, 2025",
-                  "status": "Public",
-                  "hired": true,
-                  "type": "Freelance",
-                  "applications": 12,
-                  "createdDate": "2025-01-10",
-                  "applicationsList": [
-                    {
-                      "id": 1,
-                      "name": "Jean Dupont",
-                      "email": "jean.dupont@email.com",
-                      "phone": "+33 6 12 34 56 78",
-                      "status": "New",
-                      "appliedDate": "2025-01-15T10:30:00Z",
-                      "source": "Career Site",
-                      "avatar": null,
-                      "resume": "resume_jean_dupont.pdf",
-                      "coverLetter": "cover_jean_dupont.pdf"
-                    },
-                    {
-                      "id": 2,
-                      "name": "Marie Martin",
-                      "email": "marie.martin@email.com",
-                      "phone": "+33 6 98 76 54 32",
-                      "status": "CV Selected",
-                      "appliedDate": "2025-01-14T14:20:00Z",
-                      "source": "LinkedIn",
-                      "avatar": null,
-                      "resume": "resume_marie_martin.pdf",
-                      "coverLetter": null
-                    },
-                    {
-                      "id": 3,
-                      "name": "Pierre Dubois",
-                      "email": "pierre.dubois@email.com",
-                      "phone": "+33 6 55 44 33 22",
-                      "status": "Phone Evaluated",
-                      "appliedDate": "2025-01-13T09:15:00Z",
-                      "source": "Indeed",
-                      "avatar": null,
-                      "resume": "resume_pierre_dubois.pdf",
-                      "coverLetter": "cover_pierre_dubois.pdf"
-                    }
-                  ],
+    {
+      "id": 1,
+      "title": "JAVA Engineer",
+      "date": "Jul 2, 2025",
+      "status": "Public",
+      "hired": false,
+      "applications": 12,
+      "createdDate": "2025-01-10",
+      "applicationsList": [
+        {
+          "id": 1,
+          "name": "Jean Dupont",
+          "email": "jean.dupont@email.com",
+          "phone": "+33 6 12 34 56 78",
+          "status": "New",
+          "appliedDate": "2025-01-15T10:30:00Z",
+          "source": "Career Site",
+          "avatar": null,
+          "resume": "resume_jean_dupont.pdf",
+          "coverLetter": "cover_jean_dupont.pdf"
+        },
+        {
+          "id": 2,
+          "name": "Marie Martin",
+          "email": "marie.martin@email.com",
+          "phone": "+33 6 98 76 54 32",
+          "status": "CV Selected",
+          "appliedDate": "2025-01-14T14:20:00Z",
+          "source": "LinkedIn",
+          "avatar": null,
+          "resume": "resume_marie_martin.pdf",
+          "coverLetter": null
+        },
+        {
+          "id": 3,
+          "name": "Pierre Dubois",
+          "email": "pierre.dubois@email.com",
+          "phone": "+33 6 55 44 33 22",
+          "status": "Phone Evaluated",
+          "appliedDate": "2025-01-13T09:15:00Z",
+          "source": "Indeed",
+          "avatar": null,
+          "resume": "resume_pierre_dubois.pdf",
+          "coverLetter": "cover_pierre_dubois.pdf"
+        }
+      ],
       "company": {
         "name": "TechCorp France",
         "url": "https://techcorp-fr.com",
@@ -202,42 +200,42 @@
         ]
       }
     },
-                    {
-                  "id": 2,
-                  "title": "Python Engineer",
-                  "location": "Freelance - Colombo",
-                  "date": "Jun 29, 2025",
-                  "status": "Public",
-                  "hired": true,
-                  "type": "Freelance",
-                  "applications": 8,
-                  "createdDate": "2025-01-08",
-                  "applicationsList": [
-                    {
-                      "id": 4,
-                      "name": "Raj Patel",
-                      "email": "raj.patel@email.com",
-                      "phone": "+94 71 234 5678",
-                      "status": "New",
-                      "appliedDate": "2025-01-12T11:45:00Z",
-                      "source": "Career Site",
-                      "avatar": null,
-                      "resume": "resume_raj_patel.pdf",
-                      "coverLetter": "cover_raj_patel.pdf"
-                    },
-                    {
-                      "id": 5,
-                      "name": "Priya Singh",
-                      "email": "priya.singh@email.com",
-                      "phone": "+94 77 876 5432",
-                      "status": "CV Selected",
-                      "appliedDate": "2025-01-11T16:30:00Z",
-                      "source": "LinkedIn",
-                      "avatar": null,
-                      "resume": "resume_priya_singh.pdf",
-                      "coverLetter": null
-                    }
-                  ],
+    {
+      "id": 2,
+      "title": "Python Engineer",
+      "location": "Freelance - Colombo",
+      "date": "Jun 29, 2025",
+      "status": "Public",
+      "hired": false,
+      "type": "Freelance",
+      "applications": 8,
+      "createdDate": "2025-01-08",
+      "applicationsList": [
+        {
+          "id": 4,
+          "name": "Raj Patel",
+          "email": "raj.patel@email.com",
+          "phone": "+94 71 234 5678",
+          "status": "New",
+          "appliedDate": "2025-01-12T11:45:00Z",
+          "source": "Career Site",
+          "avatar": null,
+          "resume": "resume_raj_patel.pdf",
+          "coverLetter": "cover_raj_patel.pdf"
+        },
+        {
+          "id": 5,
+          "name": "Priya Singh",
+          "email": "priya.singh@email.com",
+          "phone": "+94 77 876 5432",
+          "status": "CV Selected",
+          "appliedDate": "2025-01-11T16:30:00Z",
+          "source": "LinkedIn",
+          "avatar": null,
+          "resume": "resume_priya_singh.pdf",
+          "coverLetter": null
+        }
+      ],
       "company": {
         "name": "DataSoft Solutions",
         "url": "https://datasoft-sl.com",
@@ -357,6 +355,402 @@
         ],
         "socialMedia": [
           "LinkedIn Company Page",
+          "Facebook"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "title": "Frontend Developer",
+      "date": "Jun 25, 2025",
+      "status": "Public",
+      "hired": false,
+      "applications": 0,
+      "createdDate": "2025-01-05",
+      "applicationsList": [],
+      "company": {
+        "name": "WebTech Inc",
+        "url": "https://webtech-ny.com",
+        "description": "Digital agency specializing in modern web applications and user experience design.",
+        "logo": null,
+        "banner": null
+      },
+      "jobDescription": {
+        "title": "Frontend Developer",
+        "summary": "Join our creative team to build beautiful and functional web applications.",
+        "requirements": [
+          "2+ years of frontend development experience",
+          "Proficiency in HTML, CSS, and JavaScript",
+          "Experience with React, Vue, or Angular",
+          "Understanding of responsive design principles"
+        ],
+        "responsibilities": [
+          "Develop responsive web applications",
+          "Collaborate with designers and backend developers",
+          "Optimize application performance",
+          "Ensure cross-browser compatibility"
+        ],
+        "benefits": [
+          "Competitive salary and benefits",
+          "Flexible work arrangements",
+          "Professional development opportunities",
+          "Creative and collaborative environment"
+        ]
+      },
+      "jobSettings": {
+        "contractType": "Full-time",
+        "experienceLevel": "Mid-Level",
+        "salary": {
+          "min": 70000,
+          "max": 90000,
+          "currency": "USD"
+        },
+        "location": {
+          "city": "New York",
+          "country": "USA",
+          "remote": false,
+          "hybrid": true
+        },
+        "duration": "Permanent",
+        "startDate": "2025-09-01"
+      },
+      "applicationForm": {
+        "fields": [
+          "Full Name",
+          "Email",
+          "Phone",
+          "Resume/CV",
+          "Portfolio Link",
+          "Cover Letter"
+        ],
+        "requiredFields": [
+          "Full Name",
+          "Email",
+          "Resume/CV",
+          "Portfolio Link"
+        ]
+      },
+      "workflow": {
+        "stages": [
+          {
+            "id": 1,
+            "name": "New",
+            "description": "Application received",
+            "color": "#2196F3"
+          },
+          {
+            "id": 2,
+            "name": "CV Selected",
+            "description": "Resume reviewed and selected",
+            "color": "#FF9800"
+          },
+          {
+            "id": 3,
+            "name": "Phone Evaluated",
+            "description": "Initial phone screening completed",
+            "color": "#9C27B0"
+          },
+          {
+            "id": 4,
+            "name": "Interview Passed",
+            "description": "Technical interview successful",
+            "color": "#4CAF50"
+          },
+          {
+            "id": 5,
+            "name": "Offer Made",
+            "description": "Job offer extended",
+            "color": "#795548"
+          },
+          {
+            "id": 6,
+            "name": "Hired",
+            "description": "Candidate accepted offer",
+            "color": "#607D8B"
+          }
+        ]
+      },
+      "team": {
+        "hiringManager": "Sarah Johnson",
+        "recruiter": "Mike Chen",
+        "interviewers": [
+          "David Wilson",
+          "Lisa Rodriguez"
+        ]
+      },
+      "promotion": {
+        "careerSite": false,
+        "jobBoards": [],
+        "socialMedia": []
+      }
+    },
+    {
+      "id": 4,
+      "title": "DevOps Engineer",
+      "location": "Remote",
+      "date": "Jul 1, 2025",
+      "status": "Public",
+      "hired": false,
+      "type": "Full-time",
+      "applications": 15,
+      "createdDate": "2025-01-12",
+      "applicationsList": [],
+      "company": {
+        "name": "CloudTech Solutions",
+        "url": "https://cloudtech.com",
+        "description": "Leading cloud infrastructure and DevOps consulting company.",
+        "logo": null,
+        "banner": null
+      },
+      "jobDescription": {
+        "title": "DevOps Engineer",
+        "summary": "We are seeking a DevOps Engineer to help us build and maintain scalable cloud infrastructure.",
+        "requirements": [
+          "5+ years of DevOps experience",
+          "Strong knowledge of AWS, Azure, or GCP",
+          "Experience with Docker and Kubernetes",
+          "Proficiency in Python, Bash, or PowerShell",
+          "Knowledge of CI/CD pipelines"
+        ],
+        "responsibilities": [
+          "Design and implement cloud infrastructure",
+          "Automate deployment processes",
+          "Monitor system performance and security",
+          "Collaborate with development teams"
+        ],
+        "benefits": [
+          "100% remote work",
+          "Competitive salary",
+          "Health and dental insurance",
+          "Professional development budget"
+        ]
+      },
+      "jobSettings": {
+        "contractType": "Full-time",
+        "experienceLevel": "Senior",
+        "salary": {
+          "min": 100000,
+          "max": 140000,
+          "currency": "USD"
+        },
+        "location": {
+          "city": "Remote",
+          "country": "Global",
+          "remote": true,
+          "hybrid": false
+        },
+        "duration": "Permanent",
+        "startDate": "2025-08-01"
+      },
+      "applicationForm": {
+        "fields": [
+          "Full Name",
+          "Email",
+          "Phone",
+          "Resume/CV",
+          "GitHub Profile",
+          "Cover Letter"
+        ],
+        "requiredFields": [
+          "Full Name",
+          "Email",
+          "Resume/CV",
+          "GitHub Profile"
+        ]
+      },
+      "workflow": {
+        "stages": [
+          {
+            "id": 1,
+            "name": "New",
+            "description": "Application received",
+            "color": "#2196F3"
+          },
+          {
+            "id": 2,
+            "name": "CV Selected",
+            "description": "Resume reviewed and selected",
+            "color": "#FF9800"
+          },
+          {
+            "id": 3,
+            "name": "Phone Evaluated",
+            "description": "Initial phone screening completed",
+            "color": "#9C27B0"
+          },
+          {
+            "id": 4,
+            "name": "Interview Passed",
+            "description": "Technical interview successful",
+            "color": "#4CAF50"
+          },
+          {
+            "id": 5,
+            "name": "Offer Made",
+            "description": "Job offer extended",
+            "color": "#795548"
+          },
+          {
+            "id": 6,
+            "name": "Hired",
+            "description": "Candidate accepted offer",
+            "color": "#607D8B"
+          }
+        ]
+      },
+      "team": {
+        "hiringManager": "Alex Thompson",
+        "recruiter": "Emma Davis",
+        "interviewers": [
+          "Chris Martinez",
+          "Rachel Green"
+        ]
+      },
+      "promotion": {
+        "careerSite": true,
+        "jobBoards": [
+          "LinkedIn",
+          "Indeed",
+          "Stack Overflow"
+        ],
+        "socialMedia": [
+          "LinkedIn Company Page",
+          "Twitter"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "title": "Product Manager",
+      "location": "London, UK",
+      "date": "Jun 30, 2025",
+      "status": "Public",
+      "hired": false,
+      "type": "Full-time",
+      "applications": 22,
+      "createdDate": "2025-01-11",
+      "applicationsList": [],
+      "company": {
+        "name": "InnovateTech Ltd",
+        "url": "https://innovatetech.co.uk",
+        "description": "Innovative technology company specializing in fintech solutions.",
+        "logo": null,
+        "banner": null
+      },
+      "jobDescription": {
+        "title": "Product Manager",
+        "summary": "Join our product team to drive the development of innovative fintech products.",
+        "requirements": [
+          "3+ years of product management experience",
+          "Experience in fintech or financial services",
+          "Strong analytical and communication skills",
+          "Knowledge of agile methodologies",
+          "Understanding of user experience principles"
+        ],
+        "responsibilities": [
+          "Define product vision and strategy",
+          "Gather and prioritize product requirements",
+          "Work with cross-functional teams",
+          "Analyze market trends and competition"
+        ],
+        "benefits": [
+          "Competitive salary with equity",
+          "Private healthcare",
+          "25 days annual leave",
+          "Learning and development opportunities"
+        ]
+      },
+      "jobSettings": {
+        "contractType": "Full-time",
+        "experienceLevel": "Mid-Senior",
+        "salary": {
+          "min": 80000,
+          "max": 110000,
+          "currency": "GBP"
+        },
+        "location": {
+          "city": "London",
+          "country": "UK",
+          "remote": false,
+          "hybrid": true
+        },
+        "duration": "Permanent",
+        "startDate": "2025-09-01"
+      },
+      "applicationForm": {
+        "fields": [
+          "Full Name",
+          "Email",
+          "Phone",
+          "Resume/CV",
+          "Cover Letter",
+          "Portfolio Link"
+        ],
+        "requiredFields": [
+          "Full Name",
+          "Email",
+          "Resume/CV",
+          "Cover Letter"
+        ]
+      },
+      "workflow": {
+        "stages": [
+          {
+            "id": 1,
+            "name": "New",
+            "description": "Application received",
+            "color": "#2196F3"
+          },
+          {
+            "id": 2,
+            "name": "CV Selected",
+            "description": "Resume reviewed and selected",
+            "color": "#FF9800"
+          },
+          {
+            "id": 3,
+            "name": "Phone Evaluated",
+            "description": "Initial phone screening completed",
+            "color": "#9C27B0"
+          },
+          {
+            "id": 4,
+            "name": "Interview Passed",
+            "description": "Technical interview successful",
+            "color": "#4CAF50"
+          },
+          {
+            "id": 5,
+            "name": "Offer Made",
+            "description": "Job offer extended",
+            "color": "#795548"
+          },
+          {
+            "id": 6,
+            "name": "Hired",
+            "description": "Candidate accepted offer",
+            "color": "#607D8B"
+          }
+        ]
+      },
+      "team": {
+        "hiringManager": "James Wilson",
+        "recruiter": "Sophie Brown",
+        "interviewers": [
+          "Michael Johnson",
+          "Sarah Davis"
+        ]
+      },
+      "promotion": {
+        "careerSite": true,
+        "jobBoards": [
+          "LinkedIn",
+          "Indeed",
+          "Glassdoor"
+        ],
+        "socialMedia": [
+          "LinkedIn Company Page",
+          "Twitter",
           "Facebook"
         ]
       }

@@ -18,12 +18,39 @@ import CandidatesView from '@/views/CandidatesView.vue'
 import CandidateDetail from '@/views/CandidateDetail.vue'
 import CreateCandidateView from '@/views/CreateCandidateView.vue'
 
+// Import auth and public views
+import LoginView from '@/views/auth/LoginView.vue'
+import SignupView from '@/views/auth/SignupView.vue'
+import PublicJobsView from '@/views/public/PublicJobsView.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // Public routes (no authentication required)
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView,
+      meta: { requiresAuth: false }
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: SignupView,
+      meta: { requiresAuth: false }
+    },
+    {
+      path: '/jobs',
+      name: 'public-jobs',
+      component: PublicJobsView,
+      meta: { requiresAuth: false }
+    },
+
+    // Protected routes (require authentication)
     {
       path: '/',
       component: DefaultLayout,
+      meta: { requiresAuth: true },
       children: [
         {
           path: '',
@@ -123,6 +150,7 @@ const router = createRouter({
       path: '/recruitment/:id',
       name: 'job-detail',
       component: JobDetail, // no DefaultLayout — clean layout
+      meta: { requiresAuth: true },
       props: true, // allows passing :id as prop
     },
   ],

@@ -3,11 +3,11 @@ import mockData from '@/assets/mock.json'
 export interface Job {
   id: number
   title: string
-  location: string
+  location?: string
   date: string
   status: string
   hired: boolean
-  type: string
+  type?: string
   company: {
     name: string
     url: string
@@ -133,7 +133,7 @@ class JobService {
     const lowercaseQuery = query.toLowerCase()
     return this.jobs.filter(job =>
       job.title.toLowerCase().includes(lowercaseQuery) ||
-      job.location.toLowerCase().includes(lowercaseQuery) ||
+      (job.location && job.location.toLowerCase().includes(lowercaseQuery)) ||
       job.company.name.toLowerCase().includes(lowercaseQuery)
     )
   }
@@ -145,7 +145,7 @@ class JobService {
 
   // Filter jobs by type
   filterJobsByType(type: string): Job[] {
-    return this.jobs.filter(job => job.type === type)
+    return this.jobs.filter(job => job.type && job.type === type)
   }
 }
 
