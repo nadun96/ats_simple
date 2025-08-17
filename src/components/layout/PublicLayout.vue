@@ -197,11 +197,16 @@ const goToSignup = () => {
 
 .public-header {
   border-bottom: 1px solid #e9ecef;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .public-main {
+  padding-top: 80px; /* Match the app bar height */
   min-height: calc(100vh - 80px - 400px); /* viewport height - header - footer */
-  padding: 0;
   background-color: transparent;
 }
 
@@ -225,5 +230,10 @@ const goToSignup = () => {
 
 :deep(.v-main) {
   background-color: transparent !important;
+}
+
+/* Ensure the app bar doesn't interfere with content */
+:deep(.v-app-bar) {
+  position: fixed !important;
 }
 </style>
