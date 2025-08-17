@@ -65,7 +65,7 @@ const navGroups: NavGroup[] = [
   },
   {
     title: 'CV Library',
-    items: ['All Profiles'],
+    items: ['All Profiles', 'CV Library'],
   },
 ]
 
@@ -75,8 +75,15 @@ const isActiveGroup = (groupTitle: string) => {
 }
 
 const handleNavItemClick = (groupTitle: string, itemTitle: string) => {
-  if (groupTitle === 'CV Library' && itemTitle === 'All Profiles') {
-    router.push('/candidates')
+  if (groupTitle === 'CV Library') {
+    switch (itemTitle) {
+      case 'All Profiles':
+        router.push('/candidates')
+        break
+      case 'CV Library':
+        router.push('/cv-library')
+        break
+    }
   } else if (groupTitle === 'Recruitments') {
     // Handle recruitment navigation
     switch (itemTitle) {

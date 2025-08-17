@@ -20,6 +20,6 @@ export const navGroups: NavGroup[] = [
   {
     title: 'CV Library',
     icon: 'mdi-file-document-multiple',
-    items: ['Search CVs', 'Favorite CVs', 'Recent CVs'],
+    items: ['All Profiles', 'CV Library'],
   },
 ]

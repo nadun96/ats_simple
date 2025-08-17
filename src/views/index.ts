@@ -15,6 +15,9 @@ export { default as CandidatesView } from './CandidatesView.vue'
 export { default as CreateCandidateView } from './CreateCandidateView.vue'
 export { default as CandidateDetail } from './CandidateDetail.vue'
 
+// CV Library Views
+export { default as CVLibraryView } from './CVLibraryView.vue'
+
 // Job Views
 export { default as JobDetail } from './JobDetail.vue'
 export { default as CreateJob } from './Jobs/CreateJob.vue'

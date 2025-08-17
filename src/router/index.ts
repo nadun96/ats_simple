@@ -17,6 +17,7 @@ import MyCalendar from '@/components/profile/MyCalendar.vue'
 import CandidatesView from '@/views/CandidatesView.vue'
 import CandidateDetail from '@/views/CandidateDetail.vue'
 import CreateCandidateView from '@/views/CreateCandidateView.vue'
+import CVLibraryView from '@/views/CVLibraryView.vue'
 
 // Import auth and public views
 import LoginView from '@/views/auth/LoginView.vue'
@@ -107,6 +108,13 @@ const router = createRouter({
           name: 'candidate-detail',
           component: CandidateDetail,
           props: true,
+        },
+
+        // 🔹 CV Library routes
+        {
+          path: 'cv-library',
+          name: 'cv-library',
+          component: CVLibraryView,
         },
 
         // 🔹 Profile routes - moved inside DefaultLayout
